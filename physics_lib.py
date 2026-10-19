@@ -1,3 +1,33 @@
+# Физические константы
+# Основные физические константы
+physical_constant = """
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+|Quantity                           |Value      |
+|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!|
+|elementary charge                  |           |
+|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!|
+|Newtonian constant of gravitation  |           |
+|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!|
+|Planck constant                    |           |
+|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!|
+|speed of light in vacuum           |           |
+|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!|
+|vacuum electric permittivity       |           |
+|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!|
+|vacuum magnetic permeability       |           |
+|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!|
+|electron mass                      |           |
+|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!|
+|fine-structure constant            |           |
+|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!|
+|Josephson constant                 |           |
+|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!|
+|Rydberg constant                   |           |
+|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!|
+|von Klitzing constant              |           |
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+"""
+
 # Вещества
 # Вещество может иметь агрегатные состояния: твердое; жидкое; газообразное; плазма; сверхтекучее; сверхпроводящее.
 # Помимо этого также существуют такие состаяния как аморфное (стеклообразное) состояние, состояние жидкого кристалла и высокоэластичное (полимерное) состояние.
@@ -69,6 +99,33 @@ Energy_description = """
 
 # создание объекта: object_mass = _Mass(value, "kilogram")
 class _Mass:
+    # Создание объекта (экземлпяра класса), инициализация принимает аргументы: Количество что является произвольной величиной
+    # не зависящей от единицы измерения и название единицы измерения для ее определения
+    def __init__(self, _value: float, _dimension: str):
+        _dimension = _dimension.lower()
+
+        if hasattr(self, _dimension):  # если класс имеет арибут совпадающий с
+            setattr(self, _dimension, True)  # названием переданного аргумента
+            # то атрибуту присваивается значение True.
+
+            # преобразование value в соответствии с переданным аргументом _dimension.
+            self.value = _value
+            self.dimension = _dimension
+
+    # Функция для преобразования единиц измерения принимает аргумент
+    # единица измерения to_dimension в которую нужно преобразовать величину (переменную value).
+    def convert(self, to_dimension: str):
+        to_dimension = to_dimension.lower()
+
+        # Сброс флага dimension для назначения нового to_dimension.
+        setattr(self, self.dimension, False)
+        setattr(self, to_dimension, True)
+
+        # преобразование value в соответствии с переданным аргументом to_dimension.
+        self.value = self.value * self.dimensions[self.dimension]
+        self.value = self.value / self.dimensions[to_dimension]
+        self.dimension = to_dimension
+
     value: float
     dimension: str
 
@@ -97,33 +154,6 @@ class _Mass:
         "ounce": 28.3495231,
         "carat": 0.2,
     }
-
-    # Создание объекта (экземлпяра класса), инициализация принимает аргументы: Количество что является произвольной величиной
-    # не зависящей от единицы измерения и название единицы измерения для ее определения
-    def __init__(self, _value: float, _dimension: str):
-        _dimension = _dimension.lower()
-
-        if hasattr(self, _dimension):  # если класс имеет арибут совпадающий с
-            setattr(self, _dimension, True)  # названием переданного аргумента
-            # то атрибуту присваивается значение True.
-
-            # преобразование value в соответствии с переданным аргументом _dimension.
-            self.value = _value
-            self.dimension = _dimension
-
-    # Функция для преобразования единиц измерения принимает аргументы:
-    # текущяя единица измерения и единица измерения в которую нужно преобразовать величину (переменную value).
-    def convert(self, from_dimension: str, to_dimension: str):
-        to_dimension = to_dimension.lower()
-
-        # Сброс флага from_dimension для назначения нового to_dimension.
-        setattr(self, from_dimension, False)
-        setattr(self, to_dimension, True)
-
-        # преобразование value в соответствии с переданными аргументами from_dimension и to_dimension.
-        self.value = self.value * self.dimensions[from_dimension]
-        self.value = self.value / self.dimensions[to_dimension]
-        self.dimension = to_dimension
 
 
 # Mass Inertial and Gravitational
