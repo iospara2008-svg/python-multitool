@@ -69,8 +69,10 @@ Energy_description = """
 
 # создание объекта: object_mass = _Mass(value, "kilogram")
 class _Mass:
-    value: int
+    value: float
+    dimension: str
 
+    # Основные единицы измерения
     microgram: bool = False
     milligram: bool = False
     gram: bool = False
@@ -78,27 +80,50 @@ class _Mass:
     centner: bool = False
     ton: bool = False
 
+    # Допольнительны единицы измерения
     pound: bool = False
     ounce: bool = False
     carat: bool = False
 
-    def __init__(self, _value, dimension):
-        self.value = _value
+    # Словарь для преобразования имзерений относительно грамма
+    dimensions = {
+        "microgram": 1e-6,
+        "milligram": 1e-3,
+        "gram": 1.0,
+        "kilogram": 1e3,
+        "centner": 1e5,
+        "ton": 1e6,
+        "pound": 453.59237,
+        "ounce": 28.3495231,
+        "carat": 0.2,
+    }
 
-        if isinstance(dimension, str) and hasattr(self, dimension):
-            setattr(self, dimension, True)
-        elif dimension in [
-            self.microgram,
-            self.milligram,
-            self.gram,
-            self.kilogram,
-            self.centner,
-            self.ton,
-            self.pound,
-            self.ounce,
-            self.carat,
-        ]:
-            pass
+    # Создание объекта (экземлпяра класса), инициализация принимает аргументы: Количество что является произвольной величиной
+    # не зависящей от единицы измерения и название единицы измерения для ее определения
+    def __init__(self, _value: float, _dimension: str):
+        _dimension = _dimension.lower()
+
+        if hasattr(self, _dimension):  # если класс имеет арибут совпадающий с
+            setattr(self, _dimension, True)  # названием переданного аргумента
+            # то атрибуту присваивается значение True.
+
+            # преобразование value в соответствии с переданным аргументом _dimension.
+            self.value = _value
+            self.dimension = _dimension
+
+    # Функция для преобразования единиц измерения принимает аргументы:
+    # текущяя единица измерения и единица измерения в которую нужно преобразовать величину (переменную value).
+    def convert(self, from_dimension: str, to_dimension: str):
+        to_dimension = to_dimension.lower()
+
+        # Сброс флага from_dimension для назначения нового to_dimension.
+        setattr(self, from_dimension, False)
+        setattr(self, to_dimension, True)
+
+        # преобразование value в соответствии с переданными аргументами from_dimension и to_dimension.
+        self.value = self.value * self.dimensions[from_dimension]
+        self.value = self.value / self.dimensions[to_dimension]
+        self.dimension = to_dimension
 
 
 # Mass Inertial and Gravitational
