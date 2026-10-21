@@ -233,6 +233,260 @@ class _Pressure(unit_base):
     }
 
 
+class _Volume(unit_base):
+    liter: bool = False
+    cubic_meter: bool = False
+    milliliter: bool = False
+    us_gallon: bool = False
+    us_liquid_quart: bool = False
+    us_liquid_pint: bool = False
+    us_cup: bool = False
+    us_fluid_ounce: bool = False
+    us_tablespoon: bool = False
+    us_teaspoon: bool = False
+    imperial_gallon: bool = False
+    imperial_quart: bool = False
+    imperial_pint: bool = False
+    imperial_cup: bool = False
+    imperial_fluid_ounce: bool = False
+    british_tablespoon: bool = False
+    british_teaspoon: bool = False
+    cubic_foot: bool = False
+    cubic_inch: bool = False
+
+    dimensions = {
+        "liter": 1.0,
+        "cubic_meter": 1000.0,
+        "milliliter": 0.001,
+        "us_gallon": 3.78541,
+        "us_liquid_quart": 0.946353,
+        "us_liquid_pint": 0.473176,
+        "us_cup": 0.24,
+        "us_fluid_ounce": 0.0295735,
+        "us_tablespoon": 0.0147868,
+        "us_teaspoon": 0.00492892,
+        "imperial_gallon": 4.54609,
+        "imperial_quart": 1.13652,
+        "imperial_pint": 0.568261,
+        "imperial_cup": 0.284131,
+        "imperial_fluid_ounce": 0.0284131,
+        "british_tablespoon": 0.0177582,
+        "british_teaspoon": 0.00591939,
+        "cubic_foot": 28.3168,
+        "cubic_inch": 0.0163871,
+    }
+
+
+# надо будет перенести этот класс в отдельный модуль
+class _DataStorage(unit_base):
+    bit: bool = False
+    kilobit: bool = False
+    kibibit: bool = False
+    megabit: bool = False
+    mebibit: bool = False
+    gigabit: bool = False
+    gibibit: bool = False
+    terabit: bool = False
+    tebibit: bool = False
+    petabit: bool = False
+    pebibit: bool = False
+    byte: bool = False
+    kilobyte: bool = False
+    kibibyte: bool = False
+    megabyte: bool = False
+    mebibyte: bool = False
+    gigabyte: bool = False
+    gibibyte: bool = False
+    terabyte: bool = False
+    tebibyte: bool = False
+    petabyte: bool = False
+    pebibyte: bool = False
+
+    dimensions = {
+        "bit": 1.0,
+        "byte": 8.0,
+        "kilobit": 1000.0,
+        "kibibit": 1024.0,
+        "megabit": 1_000_000.0,
+        "mebibit": 1_048_576.0,
+        "gigabit": 1_000_000_000.0,
+        "gibibit": 1_073_741_824.0,
+        "terabit": 1_000_000_000_000.0,
+        "tebibit": 1_099_511_627_776.0,
+        "petabit": 1_000_000_000_000_000.0,
+        "pebibit": 1_125_899_906_842_624.0,
+        "kilobyte": 8000.0,
+        "kibibyte": 8192.0,
+        "megabyte": 8_000_000.0,
+        "mebibyte": 8_388_608.0,
+        "gigabyte": 8_000_000_000.0,
+        "gibibyte": 8_589_934_592.0,
+        "terabyte": 8_000_000_000_000.0,
+        "tebibyte": 8_796_093_022_208.0,
+        "petabyte": 8_000_000_000_000_000.0,
+        "pebibyte": 9_007_199_254_740_992.0,
+    }
+
+
+class _PlaneAngle(unit_base):
+    degree: bool = False
+    gradian: bool = False
+    minute_of_arc: bool = False
+    radian: bool = False
+    mil: bool = False
+    second_of_arc: bool = False
+
+    dimensions = {
+        "radian": 1.0,
+        "degree": 0.017453292519943295,  # pi / 180
+        "gradian": 0.015707963267948967,  # pi / 200
+        "minute_of_arc": 0.0002908882086657216,  # pi / 10800
+        "second_of_arc": 0.00000484813681109536,  # pi / 648000
+        "mil": 0.0009817477042468103,  # приближенно (обычно военный тысячный / NATO mil)
+    }
+
+
+class _Area(unit_base):
+    square_meter: bool = False
+    square_kilometer: bool = False
+    square_mile: bool = False
+    square_yard: bool = False
+    square_foot: bool = False
+    square_inch: bool = False
+    hectare: bool = False
+    acre: bool = False
+
+    dimensions = {
+        "square_meter": 1.0,
+        "square_kilometer": 1_000_000.0,
+        "square_mile": 2_589_988.110336,
+        "square_yard": 0.83612736,
+        "square_foot": 0.09290304,
+        "square_inch": 0.00064516,
+        "hectare": 10_000.0,
+        "acre": 4046.8564224,
+    }
+
+
+# Этот класс писала нейронка
+class _FuelConsumption(unit_base):
+    kilometer_per_liter: bool = False
+    us_mpg: bool = False
+    imperial_mpg: bool = False
+    liter_per_100_km: bool = False
+
+    dimensions = {
+        # Базовая единица: л/100км (или литр как опорная точка конвертации)
+        "liter_per_100_km": 1.0,
+        "kilometer_per_liter": 235.214583,  # Обратная величина в пересчете на MPG/л-100км
+        "us_mpg": 235.214583,  # Коэффициент связи через обратные формулы
+        "imperial_mpg": 282.480936,
+    }
+
+
+# Этот класс писала нейронка
+class _Speed(unit_base):
+    meter_per_second: bool = False
+    kilometer_per_hour: bool = False
+    mile_per_hour: bool = False
+    foot_per_second: bool = False
+    knot: bool = False
+
+    dimensions = {
+        "meter_per_second": 1.0,
+        "kilometer_per_hour": 0.2777777778,  # 1 км/ч = 1 / 3.6 м/с
+        "mile_per_hour": 0.44704,  # 1 mph = 0.44704 м/с
+        "foot_per_second": 0.3048,  # 1 ft/s = 0.3048 м/с
+        "knot": 0.514444,  # 1 узел = 0.514444 м/с
+    }
+
+
+# надо будет перенести этот класс в отдельный модуль
+class _DataTransferRate(unit_base):
+    bit_per_second: bool = False
+    kilobit_per_second: bool = False
+    kibibit_per_second: bool = False
+    megabit_per_second: bool = False
+    mebibit_per_second: bool = False
+    gigabit_per_second: bool = False
+    gibibit_per_second: bool = False
+    terabit_per_second: bool = False
+    tebibit_per_second: bool = False
+    byte_per_second: bool = False
+    kilobyte_per_second: bool = False
+    kibibyte_per_second: bool = False
+    megabyte_per_second: bool = False
+    mebibyte_per_second: bool = False
+    gigabyte_per_second: bool = False
+    gibibyte_per_second: bool = False
+    terabyte_per_second: bool = False
+    tebibyte_per_second: bool = False
+
+    dimensions = {
+        "bit_per_second": 1.0,
+        "byte_per_second": 8.0,
+        "kilobit_per_second": 1000.0,
+        "kibibit_per_second": 1024.0,
+        "megabit_per_second": 1_000_000.0,
+        "mebibit_per_second": 1_048_576.0,
+        "gigabit_per_second": 1_000_000_000.0,
+        "gibibit_per_second": 1_073_741_824.0,
+        "terabit_per_second": 1_000_000_000_000.0,
+        "tebibit_per_second": 1_099_511_627_776.0,
+        "kilobyte_per_second": 8000.0,
+        "kibibyte_per_second": 8192.0,
+        "megabyte_per_second": 8_000_000.0,
+        "mebibyte_per_second": 8_388_608.0,
+        "gigabyte_per_second": 8_000_000_000.0,
+        "gibibyte_per_second": 8_589_934_592.0,
+        "terabyte_per_second": 8_000_000_000_000.0,
+        "tebibyte_per_second": 8_796_093_022_208.0,
+    }
+
+
+class _Frequency(unit_base):
+    hertz: bool = False
+    kilohertz: bool = False
+    megahertz: bool = False
+    gigahertz: bool = False
+
+    dimensions = {
+        "hertz": 1.0,
+        "kilohertz": 1e3,
+        "megahertz": 1e6,
+        "gigahertz": 1e9,
+    }
+
+
+class _Energy(unit_base):
+    joule: bool = False
+    kilojoule: bool = False
+    gram_calorie: bool = False
+    kilocalorie: bool = False
+    watt_hour: bool = False
+    kilowatt_hour: bool = False
+    electronvolt: bool = False
+    british_thermal_unit: bool = False
+    us_therm: bool = False
+    foot_pound: bool = False
+
+    dimensions = {
+        "joule": 1.0,
+        "kilojoule": 1e3,
+        "gram_calorie": 4.184,
+        "kilocalorie": 4.184e3,
+        "watt_hour": 3.6e3,
+        "kilowatt_hour": 3.6e6,
+        "electronvolt": 1.602176634e-19,
+        "british_thermal_unit": 1055.05585262,
+        "us_therm": 1.054804e8,
+        "foot_pound": 1.3558179483314004,
+    }
+
+
+# Нужно написать отдельный конвертер для температуры
+
+
 # Mass Inertial and Gravitational
 # Масса - скалярная величина, определяющая инертные и гравитационные свойства тел.
 # Масса эквивалентна энергии покоя
