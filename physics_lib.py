@@ -97,20 +97,20 @@ Energy_description = """
 """
 
 
-# создание объекта: object_mass = _Mass(value, "kilogram")
-class _Mass:
+# пример создание объекта наследуемого от класса unit_base: object_mass = _Mass(value, "kilogram")
+class unit_base:
     # Создание объекта (экземлпяра класса), инициализация принимает аргументы: Количество что является произвольной величиной
     # не зависящей от единицы измерения и название единицы измерения для ее определения
-    def __init__(self, _value: float, _dimension: str):
-        _dimension = _dimension.lower()
+    def __init__(self, value: float, dimension: str):
+        dimension = dimension.lower()
 
-        if hasattr(self, _dimension):  # если класс имеет арибут совпадающий с
-            setattr(self, _dimension, True)  # названием переданного аргумента
+        if hasattr(self, dimension):  # если класс имеет арибут совпадающий с
+            setattr(self, dimension, True)  # названием переданного аргумента
             # то атрибуту присваивается значение True.
 
             # преобразование value в соответствии с переданным аргументом _dimension.
-            self.value = _value
-            self.dimension = _dimension
+            self.value = value
+            self.dimension = dimension
 
     # Функция для преобразования единиц измерения принимает аргумент
     # единица измерения to_dimension в которую нужно преобразовать величину (переменную value).
@@ -129,20 +129,81 @@ class _Mass:
     value: float
     dimension: str
 
-    # Основные единицы измерения
+    def __str__(self):
+        return f"Value {self.value}, Dimension {self.dimension}"
+
+
+class _Time(unit_base):
+    nanosecond: bool = False
+    microsecond: bool = False
+    millisecond: bool = False
+    second: bool = False
+    minute: bool = False
+    hour: bool = False
+    day: bool = False
+    week: bool = False
+    year: bool = False
+    century: bool = False
+    exasecond: bool = False
+
+    dimensions = {
+        "nanosecond": 1e9,
+        "microsecond": 1e6,
+        "millisecond": 1e3,
+        "second": 1,
+        "minute": 60,
+        "hour": 60 * 60,
+        "day": 60 * 60 * 24,
+        "week": 60 * 60 * 24 * 7,
+        "year": 60 * 60 * 24 * 365,
+        "century": 60 * 60 * 24 * 365 * 100,
+        "exasecond": 1e18,
+    }
+
+
+class _Distance(unit_base):
+    nanometer: bool = False
+    micrometer: bool = False
+    millimeter: bool = False
+    centimeter: bool = False
+    decimeter: bool = False
+    meter: bool = False
+    kilometer: bool = False
+    inch: bool = False
+    foot: bool = False
+    yard: bool = False
+    mile: bool = False
+    nautical_mile: bool = False
+    planck_length: bool = False
+
+    dimensions = {
+        "nanometer": 1e-9,
+        "micrometer": 1e-6,
+        "millimeter": 1e-3,
+        "centimeter": 1e-2,
+        "decimeter": 1e-1,
+        "meter": 1,
+        "kilometer": 1e3,
+        "inch": 0.0254,
+        "foot": 0.3048,
+        "yard": 0.9144,
+        "mile": 1609.344,
+        "nautical_mile": 1852,
+        "planck_length": 1.616e-35,
+    }
+
+
+class _Mass(unit_base):
     microgram: bool = False
     milligram: bool = False
     gram: bool = False
     kilogram: bool = False
     centner: bool = False
     ton: bool = False
-
-    # Допольнительны единицы измерения
     pound: bool = False
     ounce: bool = False
     carat: bool = False
 
-    # Словарь для преобразования имзерений относительно грамма
     dimensions = {
         "microgram": 1e-6,
         "milligram": 1e-3,
@@ -153,6 +214,22 @@ class _Mass:
         "pound": 453.59237,
         "ounce": 28.3495231,
         "carat": 0.2,
+    }
+
+
+class _Pressure(unit_base):
+    atmosphere: bool = False
+    bar: bool = False
+    pascal: bool = False
+    torr: bool = False
+    pound_force_per_square_inch: bool = False
+
+    dimensions = {
+        "pascal": 1,
+        "bar": 100000.0,
+        "atmosphere": 101325.0,
+        "torr": 133.322,
+        "pound_force_per_square_inch": 6894.76,
     }
 
 
