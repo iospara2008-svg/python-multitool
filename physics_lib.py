@@ -370,18 +370,49 @@ class _Area(unit_base):
 
 # Этот класс писала нейронка
 class _FuelConsumption(unit_base):
+    liter_per_100_km: bool = False
     kilometer_per_liter: bool = False
     us_mpg: bool = False
     imperial_mpg: bool = False
-    liter_per_100_km: bool = False
 
+    # В качестве базы держим liter_per_100_km
     dimensions = {
-        # Базовая единица: л/100км (или литр как опорная точка конвертации)
         "liter_per_100_km": 1.0,
-        "kilometer_per_liter": 235.214583,  # Обратная величина в пересчете на MPG/л-100км
-        "us_mpg": 235.214583,  # Коэффициент связи через обратные формулы
-        "imperial_mpg": 282.480936,
     }
+
+    def convert(self, to_dimension: str):
+        to_dimension = to_dimension.lower()
+        if not hasattr(self, to_dimension):
+            raise ValueError(f"Unknown dimension: {to_dimension}")
+
+        # 1. Сначала переводим текущее значение к базовому "liter_per_100_km"
+        if self.dimension == "us_mpg":
+            # Перевод из US MPG в л/100 км: 235.214583 / mpg
+            base_value = 235.214583 / self.value
+        elif self.dimension == "imperial_mpg":
+            # Перевод из Imperial MPG в л/100 км: 282.480936 / imperial_mpg
+            base_value = 282.480936 / self.value
+        elif self.dimension == "kilometer_per_liter":
+            # Перевод из км/л в л/100 км: 100 / km_per_l
+            base_value = 100.0 / self.value
+        else:
+            base_value = self.value  # уже liter_per_100_km
+
+        # 2. Теперь из базового "liter_per_100_km" переводим в целевую единицу to_dimension
+        if to_dimension == "us_mpg":
+            new_value = 235.214583 / base_value if base_value > 0 else 0
+        elif to_dimension == "imperial_mpg":
+            new_value = 282.480936 / base_value if base_value > 0 else 0
+        elif to_dimension == "kilometer_per_liter":
+            new_value = 100.0 / base_value if base_value > 0 else 0
+        else:
+            new_value = base_value  # liter_per_100_km
+
+        # Обновляем флаги и значения
+        setattr(self, self.dimension, False)
+        setattr(self, to_dimension, True)
+        self.value = new_value
+        self.dimension = to_dimension
 
 
 # Этот класс писала нейронка
@@ -484,6 +515,49 @@ class _Energy(unit_base):
     }
 
 
+# Этот класс писала нейронка
+class _Temperature(unit_base):
+    celsius: bool = False
+    fahrenheit: bool = False
+    kelvin: bool = False
+
+    # В качестве базы держим celsius
+    dimensions = {
+        "celsius": 1.0,
+        "fahrenheit": 1.0,
+        "kelvin": 1.0,
+    }
+
+    def convert(self, to_dimension: str):
+        to_dimension = to_dimension.lower()
+        if not hasattr(self, to_dimension):
+            raise ValueError(f"Unknown dimension: {to_dimension}")
+
+        # 1. Сначала переводим текущее значение к базовому "celsius"
+        if self.dimension == "fahrenheit":
+            # Перевод из Fahrenheit в Celsius: (F - 32) * 5 / 9
+            base_value = (self.value - 32) * 5 / 9
+        elif self.dimension == "kelvin":
+            # Перевод из Kelvin в Celsius: K - 273.15
+            base_value = self.value - 273.15
+        else:
+            base_value = self.value  # уже celsius
+
+        # 2. Теперь из базового "celsius" переводим в целевую единицу to_dimension
+        if to_dimension == "fahrenheit":
+            new_value = (base_value * 9 / 5) + 32
+        elif to_dimension == "kelvin":
+            new_value = base_value + 273.15
+        else:
+            new_value = base_value  # celsius
+
+        # Обновляем флаги и значения
+        setattr(self, self.dimension, False)
+        setattr(self, to_dimension, True)
+        self.value = new_value
+        self.dimension = to_dimension
+
+
 # Нужно написать отдельный конвертер для температуры
 
 
@@ -540,7 +614,15 @@ def _mass_formula(
 
 
 def _weight_formula(mass, acceleration_of_gravity=9.81):
+    # Основная фомула веса: масса умноженная на ускорение гравитации
+    print("weight = mass * acceleration of gravity")
     return mass * acceleration_of_gravity
+
+
+def _speed_formula(distance, time):
+    # Основная фомула скорости: пройденное расстояние делить на время движения
+    print("speed = distance / time")
+    return distance / time
 
 
 if __name__ == "__main__":
