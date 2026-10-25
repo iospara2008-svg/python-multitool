@@ -133,7 +133,7 @@ class unit_base:
         return f"Value {self.value}, Dimension {self.dimension}"
 
 
-class _Time(unit_base):
+class Time(unit_base):
     nanosecond: bool = False
     microsecond: bool = False
     millisecond: bool = False
@@ -161,7 +161,7 @@ class _Time(unit_base):
     }
 
 
-class _Distance(unit_base):
+class Distance(unit_base):
     nanometer: bool = False
     micrometer: bool = False
     millimeter: bool = False
@@ -193,7 +193,7 @@ class _Distance(unit_base):
     }
 
 
-class _Mass(unit_base):
+class Mass(unit_base):
     microgram: bool = False
     milligram: bool = False
     gram: bool = False
@@ -217,7 +217,7 @@ class _Mass(unit_base):
     }
 
 
-class _Pressure(unit_base):
+class Pressure(unit_base):
     atmosphere: bool = False
     bar: bool = False
     pascal: bool = False
@@ -233,7 +233,7 @@ class _Pressure(unit_base):
     }
 
 
-class _Volume(unit_base):
+class Volume(unit_base):
     liter: bool = False
     cubic_meter: bool = False
     milliliter: bool = False
@@ -278,7 +278,7 @@ class _Volume(unit_base):
 
 
 # надо будет перенести этот класс в отдельный модуль
-class _DataStorage(unit_base):
+class DataStorage(unit_base):
     bit: bool = False
     kilobit: bool = False
     kibibit: bool = False
@@ -328,7 +328,7 @@ class _DataStorage(unit_base):
     }
 
 
-class _PlaneAngle(unit_base):
+class PlaneAngle(unit_base):
     degree: bool = False
     gradian: bool = False
     minute_of_arc: bool = False
@@ -346,7 +346,7 @@ class _PlaneAngle(unit_base):
     }
 
 
-class _Area(unit_base):
+class Area(unit_base):
     square_meter: bool = False
     square_kilometer: bool = False
     square_mile: bool = False
@@ -369,7 +369,7 @@ class _Area(unit_base):
 
 
 # Этот класс писала нейронка
-class _FuelConsumption(unit_base):
+class FuelConsumption(unit_base):
     liter_per_100_km: bool = False
     kilometer_per_liter: bool = False
     us_mpg: bool = False
@@ -416,7 +416,7 @@ class _FuelConsumption(unit_base):
 
 
 # Этот класс писала нейронка
-class _Speed(unit_base):
+class Speed(unit_base):
     meter_per_second: bool = False
     kilometer_per_hour: bool = False
     mile_per_hour: bool = False
@@ -433,7 +433,7 @@ class _Speed(unit_base):
 
 
 # надо будет перенести этот класс в отдельный модуль
-class _DataTransferRate(unit_base):
+class DataTransferRate(unit_base):
     bit_per_second: bool = False
     kilobit_per_second: bool = False
     kibibit_per_second: bool = False
@@ -475,7 +475,7 @@ class _DataTransferRate(unit_base):
     }
 
 
-class _Frequency(unit_base):
+class Frequency(unit_base):
     hertz: bool = False
     kilohertz: bool = False
     megahertz: bool = False
@@ -489,7 +489,7 @@ class _Frequency(unit_base):
     }
 
 
-class _Energy(unit_base):
+class Energy(unit_base):
     joule: bool = False
     kilojoule: bool = False
     gram_calorie: bool = False
@@ -516,7 +516,7 @@ class _Energy(unit_base):
 
 
 # Этот класс писала нейронка
-class _Temperature(unit_base):
+class Temperature(unit_base):
     celsius: bool = False
     fahrenheit: bool = False
     kelvin: bool = False
@@ -564,7 +564,7 @@ class _Temperature(unit_base):
 # Mass Inertial and Gravitational
 # Масса - скалярная величина, определяющая инертные и гравитационные свойства тел.
 # Масса эквивалентна энергии покоя
-def _mass_formula(
+def mass_formula(
     force=None,
     acceleration=None,
     m_1=None,
@@ -613,13 +613,13 @@ def _mass_formula(
         ) / pow(speed_of_light, 2)
 
 
-def _weight_formula(mass, acceleration_of_gravity=9.81):
+def weight_formula(mass, acceleration_of_gravity=9.81):
     # Основная фомула веса: масса умноженная на ускорение гравитации
     print("weight = mass * acceleration of gravity")
     return mass * acceleration_of_gravity
 
 
-def _speed_formula(distance, time):
+def speed_formula(distance, time):
     # Основная фомула скорости: пройденное расстояние делить на время движения
     print("speed = distance / time")
     return distance / time
