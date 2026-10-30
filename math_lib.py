@@ -2,7 +2,7 @@
 
 # constants & variables #
 Pi = 3.1415926535
-Imaginary_unit = 0 + 1j  # or 0 + 1i; complex(0, 1)
+Imaginary_unit = 0 + 1j  # or complex(0, 1)
 Eulers_number = 2.7182818284
 Square_root_of_2 = Pythagoras_constant = 1.4142135623  # or math.sqrt(2)
 Square_root_of_3 = Theodorus_constant = 1.7320508075  # or math.sqrt(3)
@@ -94,7 +94,7 @@ module_help = """
     6. cube_of_sum_formula(a, b)
     7. difference_of_cube_formula(a, b)
     формула квадратного уравнения:
-    8. quadratic_equation(a, b, c)
+    8. quadratic_equation_formula(a, b, c)
 """
 
 if __name__ == "__main__":
