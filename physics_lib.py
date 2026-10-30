@@ -576,39 +576,47 @@ def mass_formula(
     molar_mass=None,
     mass_of_one_molecule=None,
     number_of_particles=None,
-    body_weight=None,
-    total_enrgy_of_a_free_body=None,
+    weight_force=None,
+    total_energy_of_a_free_body=None,
     speed_of_light=None,
     impulse=None,
+    force_gr=None,
     gravitational_constant=6.6743015 * pow(10, -11),
     acceleration_of_gravity=9.81,
 ):  # Inertial mass
     if force is not None and acceleration is not None:
         print("force = mass * acceleration -> mass = force / acceleration")
         return force / acceleration
+    if (
+        force_gr is not None
+        and gravitational_constant is not None
+        and m_2 is not None
+        and distance is not None
+    ):
+        return force_gr * pow(distance, 2) / (gravitational_constant * pow(m_2, 2))
     # print("force_gr = gravitational_constant * (m_1 * m_2) / distance^2")
     # return gravitational_constant * (m_1 * m_2) / pow(distance, 2)
-    elif density is not None and volume is not None:
+    if density is not None and volume is not None:
         print("mass = density * volume")
         return density * volume
-    elif amount_of_substance_in_moles is not None and molar_mass is not None:
+    if amount_of_substance_in_moles is not None and molar_mass is not None:
         print("mass = amount of substance in moles * molar mass")
         return amount_of_substance_in_moles * molar_mass
-    elif mass_of_one_molecule is not None and number_of_particles is not None:
+    if mass_of_one_molecule is not None and number_of_particles is not None:
         print("mass = mass of one molecule/atom * number of particles")
         return mass_of_one_molecule * number_of_particles
-    elif body_weight is not None and acceleration_of_gravity is not None:
-        print("mass = body weight / acceleration of gravity")
-        return body_weight / acceleration_of_gravity
-    elif (
-        total_enrgy_of_a_free_body is not None
+    if weight_force is not None and acceleration_of_gravity is not None:
+        print("mass = weight force / acceleration of gravity")
+        return weight_force / acceleration_of_gravity
+    if (
+        total_energy_of_a_free_body is not None
         and speed_of_light is not None
         and impulse is not None
     ):
         print(
             "mass^2 = (total energy of a free body^2 / speed of light^4) - (impulse^2 / speed of light^2)"
         )
-        return (pow(total_enrgy_of_a_free_body, 2) / pow(speed_of_light, 4)) - pow(
+        return (pow(total_energy_of_a_free_body, 2) / pow(speed_of_light, 4)) - pow(
             impulse, 2
         ) / pow(speed_of_light, 2)
 
@@ -624,6 +632,17 @@ def speed_formula(distance, time):
     print("speed = distance / time")
     return distance / time
 
+
+module_help = """
+Модуль physics_lib содержит следующие функции:
+    физические формулы:
+    расчет массы:
+    1. mass_formula(force=None, acceleration=None, m_1=None, m_2=None, distance=None, density=None, volume=None, amount_of_substance_in_moles=None, molar_mass=None, mass_of_one_molecule=None, number_of_particles=None, weight_force=None, total_energy_of_a_free_body=None, speed_of_light=None, impulse=None, force_gr=None, gravitational_constant=6.6743015 * pow(10, -11), acceleration_of_gravity=9.81,)
+    расчет веса:
+    2. weight_formula(mass, acceleration_of_gravity=9.81)
+    расчет скорости:
+    3. speed_formula(distance, time)
+"""
 
 if __name__ == "__main__":
     print("Module physics_lib is running")
