@@ -20,42 +20,41 @@ Feigenbaum_constant_2 = 2.5029078750
 
 
 # Formulas for abbreviated multiplication #
-def square_of_the_sum_formula(a: float, b: float):  # Square of the sum
+def square_of_sum_formula(a: float, b: float) -> float:
     print("(a + b)^2 = a^2 + 2ab + b^2")
     return pow((a + b), 2)
 
 
-def square_of_the_difference_formula(a: float, b: float):  # Square of the difference
+def square_of_difference_formula(a: float, b: float) -> float:
     print("(a - b)^2 = a^2 - 2ab + b^2")
     return pow((a - b), 2)
 
 
-def difference_of_squares_formula(a: float, b: float):  # Difference of squares
+def difference_of_squares_formula(a: float, b: float) -> float:
     print("a^2 - b^2 = (a - b)(a + b)")
     return pow(a, 2) - pow(b, 2)
 
 
-def difference_of_cubes_formula(a: float, b: float):  # Difference of cubes
+def difference_of_cubes_formula(a: float, b: float) -> float:
     print("a^3 - b^3 = (a - b)(a^2 + ab + b^2)")
     return pow(a, 3) - pow(b, 3)
 
 
-def sum_of_cubes_formula(a: float, b: float):  # Sum of cubes
+def sum_of_cubes_formula(a: float, b: float) -> float:
     print("a^3 + b^3 = (a + b)(a^2 - ab + b^2)")
     return pow(a, 3) + pow(b, 3)
 
 
-def cube_of_sum_formula(a: float, b: float):  # Cube of sum
+def cube_of_sum_formula(a: float, b: float) -> float:
     print("(a + b)^3 = a^3 + 3a^2b + 3ab^2 + b^3")
     return pow((a + b), 3)
 
 
-def difference_of_cube_formula(a: float, b: float):  # Difference of cube
+def difference_of_cube_formula(a: float, b: float) -> float:
     print("(a - b)^3 = a^3 - 3a^2b + 3ab^2 - b^3")
     return pow((a - b), 3)
 
 
-# Quadratic equation formula
 def quadratic_equation_formula(a: float, b: float, c: float):
     print("Let the quadratic equation have the form: ax^2 + bx + c = 0")
     x1 = 0
@@ -83,11 +82,17 @@ def quadratic_equation_formula(a: float, b: float, c: float):
             return "no_solution"
 
 
+def factorial(n: float) -> float:
+    if n in [0, 1]:
+        return 1
+    return n * factorial(n - 1)
+
+
 module_help = """
 Модуль math_lib содержит следующие функции:
     формулы сокращенного умножения:
-    1. square_of_the_sum_formula(a, b)
-    2. square_of_the_difference_formula(a, b)
+    1. square_of_sum_formula(a, b)
+    2. square_of_difference_formula(a, b)
     3. difference_of_squares_formula(a, b)
     4. difference_of_cubes_formula(a, b)
     5. sum_of_cubes_formula(a, b)
