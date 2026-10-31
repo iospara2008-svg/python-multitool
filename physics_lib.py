@@ -1,3 +1,5 @@
+import math
+
 # Физические константы
 # Основные физические константы
 physical_constant = """
@@ -583,7 +585,7 @@ def mass_formula(
     force_gr=None,
     gravitational_constant=6.6743015 * pow(10, -11),
     acceleration_of_gravity=9.81,
-):  # Inertial mass
+) -> float:  # Inertial mass
     if force is not None and acceleration is not None:
         print("force = mass * acceleration -> mass = force / acceleration")
         return force / acceleration
@@ -621,27 +623,70 @@ def mass_formula(
         ) / pow(speed_of_light, 2)
 
 
-def weight_formula(mass, acceleration_of_gravity=9.81):
+def weight_formula(mass, acceleration_of_gravity=9.81) -> float:
     # Основная фомула веса: масса умноженная на ускорение гравитации
     print("weight = mass * acceleration of gravity")
     return mass * acceleration_of_gravity
 
 
-def speed_formula(distance, time):
+def speed_formula(distance, time) -> float:
     # Основная фомула скорости: пройденное расстояние делить на время движения
     print("speed = distance / time")
     return distance / time
+
+
+def the_second_liberation_cosmic_velocity_of_the_body_formula(
+    radius_of_the_planet: float,
+    orbit_altitude: float,
+    orbital_speed: float,
+    the_mass_of_the_planet_in_terms_of_Earth_masses: float,
+    gravitational_constant: float,
+) -> float:
+    print(
+        "math.sqrt((2 * gravitational_constant * the_mass_of_the_planet_in_terms_of_Earth_masses) / (radius_of_the_planet + orbit_altitude))"
+    )
+    return math.sqrt(
+        (2 * gravitational_constant * the_mass_of_the_planet_in_terms_of_Earth_masses)
+        / (radius_of_the_planet + orbit_altitude)
+    )
 
 
 module_help = """
 Модуль physics_lib содержит следующие функции:
     физические формулы:
     расчет массы:
-    1. mass_formula(force=None, acceleration=None, m_1=None, m_2=None, distance=None, density=None, volume=None, amount_of_substance_in_moles=None, molar_mass=None, mass_of_one_molecule=None, number_of_particles=None, weight_force=None, total_energy_of_a_free_body=None, speed_of_light=None, impulse=None, force_gr=None, gravitational_constant=6.6743015 * pow(10, -11), acceleration_of_gravity=9.81,)
+    1. def mass_formula(
+    force=None,
+    acceleration=None,
+    m_1=None,
+    m_2=None,
+    distance=None,
+    density=None,
+    volume=None,
+    amount_of_substance_in_moles=None,
+    molar_mass=None,
+    mass_of_one_molecule=None,
+    number_of_particles=None,
+    weight_force=None,
+    total_energy_of_a_free_body=None,
+    speed_of_light=None,
+    impulse=None,
+    force_gr=None,
+    gravitational_constant=6.6743015 * pow(10, -11),
+    acceleration_of_gravity=9.81,
+) -> float
     расчет веса:
-    2. weight_formula(mass, acceleration_of_gravity=9.81)
+    2. weight_formula(mass, acceleration_of_gravity=9.81) -> float
     расчет скорости:
-    3. speed_formula(distance, time)
+    3. speed_formula(distance, time) -> float
+    расчет второй (освобожденной) космической скорости тела:
+    4. the_second_liberation_cosmic_velocity_of_the_body_formula(
+    radius_of_the_planet: float,
+    orbit_altitude: float,
+    orbital_speed: float,
+    the_mass_of_the_planet_in_terms_of_Earth_masses: float,
+    gravitational_constant: float,
+) -> float
 """
 
 if __name__ == "__main__":
