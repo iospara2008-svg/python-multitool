@@ -82,24 +82,26 @@ def quadratic_equation_formula(a: float, b: float, c: float):
             return "no_solution"
 
 
-def factorial(n: float) -> float:
+def factorial_formula(n: float) -> float:
     if n in [0, 1]:
         return 1
-    return n * factorial(n - 1)
+    return n * factorial_formula(n - 1)
 
 
 module_help = """
 Модуль math_lib содержит следующие функции:
     формулы сокращенного умножения:
-    1. square_of_sum_formula(a, b)
-    2. square_of_difference_formula(a, b)
-    3. difference_of_squares_formula(a, b)
-    4. difference_of_cubes_formula(a, b)
-    5. sum_of_cubes_formula(a, b)
-    6. cube_of_sum_formula(a, b)
-    7. difference_of_cube_formula(a, b)
+    1. square_of_sum_formula(a: float, b: float) -> float
+    2. square_of_difference_formula(a: float, b: float) -> float
+    3. difference_of_squares_formula(a: float, b: float) -> float
+    4. difference_of_cubes_formula(a: float, b: float) -> float
+    5. sum_of_cubes_formula(a: float, b: float) -> float
+    6. cube_of_sum_formula(a: float, b: float) -> float
+    7. difference_of_cube_formula(a: float, b: float) -> float
     формула квадратного уравнения:
-    8. quadratic_equation_formula(a, b, c)
+    8. quadratic_equation_formula(a: float, b: float, c: float) -> float
+    формула факториала:
+    9. factorial_formula(n: float) -> float
 """
 
 if __name__ == "__main__":
