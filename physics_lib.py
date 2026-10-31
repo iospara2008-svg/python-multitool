@@ -651,6 +651,11 @@ def the_second_liberation_cosmic_velocity_of_the_body_formula(
     )
 
 
+# хз че это
+def boyles_law_formula(gas_pressure: float, gas_volume: float) -> float:
+    return gas_pressure * gas_volume  # constant_value_under_given_conditions
+
+
 module_help = """
 Модуль physics_lib содержит следующие функции:
     физические формулы:
@@ -687,6 +692,8 @@ module_help = """
     the_mass_of_the_planet_in_terms_of_Earth_masses: float,
     gravitational_constant: float,
 ) -> float
+    расчет закона Бойля - Мариотта:
+    5. boyles_law_formula(gas_pressure: float, gas_volume: float) -> float
 """
 
 if __name__ == "__main__":
