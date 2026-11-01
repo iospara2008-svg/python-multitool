@@ -1,8 +1,4 @@
-# Python Multitool
-if __name__ == "__main__":
-    print("Programm works")
-
-
+print("Python Multitool works")
 import time
 import math_lib
 import physics_lib
@@ -37,9 +33,6 @@ def executer():
 def multitool_help():
     print(
         """
-Python Multitool - инструмент предназначеный для решения математических, физических
-и других видов задач.
-
 Доступные команды:
     1. evaluater - оценивает вводимые выражения.
     2. executer - выполняет вводимый код.
@@ -56,4 +49,4 @@ while True:
         case "executer":
             executer()
         case _:
-            print("undefined command")
+            print("Неопределенная команда.")
