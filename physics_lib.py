@@ -679,7 +679,7 @@ module_help = """
     force_gr=None,
     gravitational_constant=6.6743015 * pow(10, -11),
     acceleration_of_gravity=9.81,
-) -> float
+    ) -> float
     расчет веса:
     2. weight_formula(mass, acceleration_of_gravity=9.81) -> float
     расчет скорости:
@@ -691,12 +691,13 @@ module_help = """
     orbital_speed: float,
     the_mass_of_the_planet_in_terms_of_Earth_masses: float,
     gravitational_constant: float,
-) -> float
+    ) -> float
     расчет закона Бойля - Мариотта:
     5. boyles_law_formula(gas_pressure: float, gas_volume: float) -> float
 """
 
 if __name__ == "__main__":
     print("Module physics_lib is running")
+    print(module_help)
 else:
     print(f"module is included: {__name__}")
