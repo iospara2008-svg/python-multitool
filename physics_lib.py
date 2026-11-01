@@ -667,6 +667,16 @@ def kinetic_energy_of_the_body_formula(mass: float, speed: float) -> float:
     return mass * pow(speed, 2) / 2
 
 
+def mixture_concentration(
+    component_mass: float, total_mass_of_all_components_of_the_mixture: float
+) -> float:
+    return component_mass / total_mass_of_all_components_of_the_mixture
+
+
+def moment_of_force(force_module: float, shoulder_strength: float) -> float:
+    return force_module * shoulder_strength
+
+
 module_help = """
 Модуль physics_lib содержит следующие функции:
     физические формулы:
@@ -711,6 +721,12 @@ module_help = """
     7. gay_lussacs_second_law_formula(gas_pressure, temperature: float) -> float
     расчет кинетической энергии тела:
     8. kinetic_energy_of_the_body_formula(mass: float, speed: float) -> float
+    расчет концентрации растворов:
+    9. mixture_concentration(
+    component_mass: float, total_mass_of_all_components_of_the_mixture: float
+    ) -> float
+    расчет момента силы:
+    10. moment_of_force(force_module: float, shoulder_strength: float) -> float
 """
 
 if __name__ == "__main__":
