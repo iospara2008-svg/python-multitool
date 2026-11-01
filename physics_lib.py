@@ -651,9 +651,20 @@ def the_second_liberation_cosmic_velocity_of_the_body_formula(
     )
 
 
-# хз че это
 def boyles_law_formula(gas_pressure: float, gas_volume: float) -> float:
     return gas_pressure * gas_volume  # constant_value_under_given_conditions
+
+
+def volumes_law_formula(gas_volume: float, temperature: float) -> float:
+    return gas_volume / temperature  # const
+
+
+def gay_lussacs_second_law_formula(gas_pressure, temperature: float) -> float:
+    return gas_pressure / temperature  # gas_pressure
+
+
+def kinetic_energy_of_the_body_formula(mass: float, speed: float) -> float:
+    return mass * pow(speed, 2) / 2
 
 
 module_help = """
@@ -694,6 +705,12 @@ module_help = """
     ) -> float
     расчет закона Бойля - Мариотта:
     5. boyles_law_formula(gas_pressure: float, gas_volume: float) -> float
+    расчет закона Гей-Люссака:
+    6. volumes_law_formula(gas_volume: float, temperature: float) -> float
+    расчет второго закона Гей-Люссака:
+    7. gay_lussacs_second_law_formula(gas_pressure, temperature: float) -> float
+    расчет кинетической энергии тела:
+    8. kinetic_energy_of_the_body_formula(mass: float, speed: float) -> float
 """
 
 if __name__ == "__main__":
