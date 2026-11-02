@@ -573,14 +573,35 @@ def kinetic_energy_of_the_body_formula(mass: float, speed: float) -> float:
     return mass * pow(speed, 2) / 2
 
 
-def mixture_concentration(
+def mixture_concentration_formula(
     component_mass: float, total_mass_of_all_components_of_the_mixture: float
 ) -> float:
     return component_mass / total_mass_of_all_components_of_the_mixture
 
 
-def moment_of_force(force_module: float, shoulder_strength: float) -> float:
+def moment_of_force_formula(force_module: float, shoulder_strength: float) -> float:
     return force_module * shoulder_strength
+
+
+def newtons_third_law_formula(force_1: float) -> float:
+    return -force_1  # force_2
+
+
+def molar_mass_of_gas_formula(
+    mass_of_gas: float,
+    amount_of_substance_in_moles: float,
+    gas_density: float,
+    density: float,
+    universal_gas_constant: float,
+    temperature_in_kelvin: float,
+    pressure: float,
+    molar_volume: float = 22.4,
+) -> float:
+    return mass_of_gas / amount_of_substance_in_moles
+    return gas_density * molar_volume  # Through molar volume
+    return (
+        density * universal_gas_constant * temperature_in_kelvin
+    ) / pressure  # From the Mendeleev-Clapeyron equation
 
 
 module_help = """
@@ -628,11 +649,24 @@ module_help = """
     расчет кинетической энергии тела:
     8. kinetic_energy_of_the_body_formula(mass: float, speed: float) -> float
     расчет концентрации растворов:
-    9. mixture_concentration(
+    9. mixture_concentration_formula(
     component_mass: float, total_mass_of_all_components_of_the_mixture: float
     ) -> float
     расчет момента силы:
-    10. moment_of_force(force_module: float, shoulder_strength: float) -> float
+    10. moment_of_force_formula(force_module: float, shoulder_strength: float) -> float
+    расчет третьего закона Ньютона:
+    11. newtons_third_law_formula(force_1: float) -> float
+    расчет молярной массы газа:
+    12. molar_mass_of_gas_formula(
+    mass_of_gas: float,
+    amount_of_substance_in_moles: float,
+    gas_density: float,
+    density: float,
+    universal_gas_constant: float,
+    temperature_in_kelvin: float,
+    pressure: float,
+    molar_volume: float = 22.4,
+    ) -> float
 """
 
 if __name__ == "__main__":
