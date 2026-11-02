@@ -604,6 +604,21 @@ def molar_mass_of_gas_formula(
     ) / pressure  # From the Mendeleev-Clapeyron equation
 
 
+def normal_acceleration_when_moving_in_a_circle_formula(
+    radius: float,
+    speed: float,
+    angular_velocity: float,
+) -> float:
+    return pow(speed, 2) / radius
+    return pow(angular_velocity, 2) * radius
+
+
+def acceleration_formula(
+    initial_speed: float, final_speed: float, time: float
+) -> float:
+    return (final_speed - initial_speed) / time
+
+
 module_help = """
 Модуль physics_lib содержит следующие функции:
     физические формулы:
@@ -667,6 +682,18 @@ module_help = """
     pressure: float,
     molar_volume: float = 22.4,
     ) -> float
+    расчет нормального ускорения при движении по окружности:
+    13. normal_acceleration_when_moving_in_a_circle_formula(
+    radius: float,
+    speed: float,
+    angular_velocity: float,
+    ) -> float
+    расчет ускорения:
+    14. def acceleration_formula(
+    initial_speed: float, final_speed: float, time: float
+    ) -> float:
+    return (final_speed - initial_speed) / time
+
 """
 
 if __name__ == "__main__":
