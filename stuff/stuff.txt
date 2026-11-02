@@ -1,0 +1,91 @@
+# надо будет перенести этот класс в отдельный модуль
+class DataStorage(unit_base):
+    bit: bool = False
+    kilobit: bool = False
+    kibibit: bool = False
+    megabit: bool = False
+    mebibit: bool = False
+    gigabit: bool = False
+    gibibit: bool = False
+    terabit: bool = False
+    tebibit: bool = False
+    petabit: bool = False
+    pebibit: bool = False
+    byte: bool = False
+    kilobyte: bool = False
+    kibibyte: bool = False
+    megabyte: bool = False
+    mebibyte: bool = False
+    gigabyte: bool = False
+    gibibyte: bool = False
+    terabyte: bool = False
+    tebibyte: bool = False
+    petabyte: bool = False
+    pebibyte: bool = False
+
+    dimensions = {
+        "bit": 1.0,
+        "byte": 8.0,
+        "kilobit": 1000.0,
+        "kibibit": 1024.0,
+        "megabit": 1_000_000.0,
+        "mebibit": 1_048_576.0,
+        "gigabit": 1_000_000_000.0,
+        "gibibit": 1_073_741_824.0,
+        "terabit": 1_000_000_000_000.0,
+        "tebibit": 1_099_511_627_776.0,
+        "petabit": 1_000_000_000_000_000.0,
+        "pebibit": 1_125_899_906_842_624.0,
+        "kilobyte": 8000.0,
+        "kibibyte": 8192.0,
+        "megabyte": 8_000_000.0,
+        "mebibyte": 8_388_608.0,
+        "gigabyte": 8_000_000_000.0,
+        "gibibyte": 8_589_934_592.0,
+        "terabyte": 8_000_000_000_000.0,
+        "tebibyte": 8_796_093_022_208.0,
+        "petabyte": 8_000_000_000_000_000.0,
+        "pebibyte": 9_007_199_254_740_992.0,
+    }
+
+# надо будет перенести этот класс в отдельный модуль
+class DataTransferRate(unit_base):
+    bit_per_second: bool = False
+    kilobit_per_second: bool = False
+    kibibit_per_second: bool = False
+    megabit_per_second: bool = False
+    mebibit_per_second: bool = False
+    gigabit_per_second: bool = False
+    gibibit_per_second: bool = False
+    terabit_per_second: bool = False
+    tebibit_per_second: bool = False
+    byte_per_second: bool = False
+    kilobyte_per_second: bool = False
+    kibibyte_per_second: bool = False
+    megabyte_per_second: bool = False
+    mebibyte_per_second: bool = False
+    gigabyte_per_second: bool = False
+    gibibyte_per_second: bool = False
+    terabyte_per_second: bool = False
+    tebibyte_per_second: bool = False
+
+    dimensions = {
+        "bit_per_second": 1.0,
+        "byte_per_second": 8.0,
+        "kilobit_per_second": 1000.0,
+        "kibibit_per_second": 1024.0,
+        "megabit_per_second": 1_000_000.0,
+        "mebibit_per_second": 1_048_576.0,
+        "gigabit_per_second": 1_000_000_000.0,
+        "gibibit_per_second": 1_073_741_824.0,
+        "terabit_per_second": 1_000_000_000_000.0,
+        "tebibit_per_second": 1_099_511_627_776.0,
+        "kilobyte_per_second": 8000.0,
+        "kibibyte_per_second": 8192.0,
+        "megabyte_per_second": 8_000_000.0,
+        "mebibyte_per_second": 8_388_608.0,
+        "gigabyte_per_second": 8_000_000_000.0,
+        "gibibyte_per_second": 8_589_934_592.0,
+        "terabyte_per_second": 8_000_000_000_000.0,
+        "tebibyte_per_second": 8_796_093_022_208.0,
+    }
