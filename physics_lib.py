@@ -619,6 +619,29 @@ def acceleration_formula(
     return (final_speed - initial_speed) / time
 
 
+def the_first_orbital_cosmic_velocity_of_a_body_formula(
+    radius_of_the_planet: float,
+    orbit_altitude: float,
+    orbital_speed: float,
+    the_mass_of_the_planet_in_terms_of_Earth_masses: float,
+    gravitational_constant: float,
+) -> float:
+    return math.sqrt(
+        (gravitational_constant * the_mass_of_the_planet_in_terms_of_Earth_masses)
+        / (radius_of_the_planet + orbit_altitude)
+    )
+
+
+def centrifugal_force_formula(
+    mass: float,
+    speed: float,
+    radius: float,
+    angular_velocity: float,
+) -> float:
+    return (mass * pow(speed, 2)) / radius
+    return mass * pow(angular_velocity, 2) * radius
+
+
 module_help = """
 Модуль physics_lib содержит следующие функции:
     физические формулы:
@@ -693,7 +716,21 @@ module_help = """
     initial_speed: float, final_speed: float, time: float
     ) -> float:
     return (final_speed - initial_speed) / time
-
+    расчет первой (орбитальной) космической скорости тела:
+    15. the_first_orbital_cosmic_velocity_of_a_body_formula(
+    radius_of_the_planet: float,
+    orbit_altitude: float,
+    orbital_speed: float,
+    the_mass_of_the_planet_in_terms_of_Earth_masses: float,
+    gravitational_constant: float,
+    ) -> float
+    расчет центробежной силы:
+    16. centrifugal_force_formula(
+    mass: float,
+    speed: float,
+    radius: float,
+    angular_velocity: float,
+    ) -> float
 """
 
 if __name__ == "__main__":
