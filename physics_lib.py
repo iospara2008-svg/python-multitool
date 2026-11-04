@@ -653,6 +653,21 @@ def potential_energy_formula(
     return (body_stiffness_coefficient * pow(absolute_deformation, 2)) / 2
 
 
+def tangential_acceleration_formula(
+    final_speed: float,
+    initial_speed: float,
+    delta_time: float,
+) -> float:
+    return (final_speed - initial_speed) / delta_time
+
+
+def mass_of_matter_over_time_formula(
+    initial_number_of_cores: float,
+    half_life: float,
+) -> float:
+    return initial_number_of_cores * pow(2, -(1 / half_life))
+
+
 module_help = """
 Модуль physics_lib содержит следующие функции:
     физические формулы:
@@ -749,6 +764,17 @@ module_help = """
     height: float,
     body_stiffness_coefficient: float,
     absolute_deformation: float,
+    ) -> float
+    расчет тангенциального ускорения:
+    18. tangential_acceleration_formula(
+    final_speed: float,
+    initial_speed: float,
+    delta_time: float,
+    ) -> float
+    расчет радиоактивного распада массы вещества через прошедшее время:
+    19. mass_of_matter_over_time_formula(
+    initial_number_of_cores: float,
+    half_life: float,
     ) -> float
 """
 
