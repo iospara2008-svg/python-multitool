@@ -642,6 +642,17 @@ def centrifugal_force_formula(
     return mass * pow(angular_velocity, 2) * radius
 
 
+def potential_energy_formula(
+    mass: float,
+    acceleration_of_gravity: float,
+    height: float,
+    body_stiffness_coefficient: float,
+    absolute_deformation: float,
+) -> float:
+    return mass * acceleration_of_gravity * height
+    return (body_stiffness_coefficient * pow(absolute_deformation, 2)) / 2
+
+
 module_help = """
 Модуль physics_lib содержит следующие функции:
     физические формулы:
@@ -730,6 +741,14 @@ module_help = """
     speed: float,
     radius: float,
     angular_velocity: float,
+    ) -> float
+    расчет потенциальной энергии:
+    17. potential_energy_formula(
+    mass: float,
+    acceleration_of_gravity: float,
+    height: float,
+    body_stiffness_coefficient: float,
+    absolute_deformation: float,
     ) -> float
 """
 
