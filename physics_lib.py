@@ -614,9 +614,14 @@ def normal_acceleration_when_moving_in_a_circle_formula(
 
 
 def acceleration_formula(
-    initial_speed: float, final_speed: float, time: float
+    initial_speed: float,
+    final_speed: float,
+    time: float,
+    force: float,
+    mass: float,
 ) -> float:
     return (final_speed - initial_speed) / time
+    return force / mass
 
 
 def the_first_orbital_cosmic_velocity_of_a_body_formula(
@@ -697,6 +702,10 @@ def alternating_current_formula(
     return math.sqrt(pow(active_power, 2) + pow(reactive_power, 2))
 
 
+def force_formula(mass: float, acceleration: float) -> float:
+    return mass * acceleration
+
+
 module_help = """
 Модуль physics_lib содержит следующие функции:
     физические формулы:
@@ -767,9 +776,13 @@ module_help = """
     angular_velocity: float,
     ) -> float
     расчет ускорения:
-    14. def acceleration_formula(
-    initial_speed: float, final_speed: float, time: float
-    ) -> float:
+    14. acceleration_formula(
+    initial_speed: float,
+    final_speed: float,
+    time: float,
+    force: float,
+    mass: float,
+    ) -> float
     return (final_speed - initial_speed) / time
     расчет первой (орбитальной) космической скорости тела:
     15. the_first_orbital_cosmic_velocity_of_a_body_formula(
@@ -823,6 +836,8 @@ module_help = """
     active_power: float,
     reactive_power: float,
     ) -> float
+    расчет силы:
+    23. force_formula(mass: float, acceleration: float) -> float
 """
 
 if __name__ == "__main__":
