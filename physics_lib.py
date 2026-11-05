@@ -668,6 +668,35 @@ def mass_of_matter_over_time_formula(
     return initial_number_of_cores * pow(2, -(1 / half_life))
 
 
+def mechanic_power_formula(
+    work: float,
+    time: float,
+    force: float,
+    speed: float,
+    torque: float,
+    angular_velocity: float,
+) -> float:
+    return work / time
+    return force * speed
+    return torque * angular_velocity
+
+
+def direct_current_formula(voltage: float, amperage: float, resist: float) -> float:
+    return voltage * amperage
+    return pow(amperage, 2) * resist
+    return pow(voltage, 2) / resist
+
+
+def alternating_current_formula(
+    voltage: float,
+    amperage: float,
+    active_power: float,
+    reactive_power: float,
+) -> float:
+    return voltage * amperage
+    return math.sqrt(pow(active_power, 2) + pow(reactive_power, 2))
+
+
 module_help = """
 Модуль physics_lib содержит следующие функции:
     физические формулы:
@@ -775,6 +804,24 @@ module_help = """
     19. mass_of_matter_over_time_formula(
     initial_number_of_cores: float,
     half_life: float,
+    ) -> float
+    расчет механической мощности:
+    20. mechanic_power_formula(
+    work: float,
+    time: float,
+    force: float,
+    speed: float,
+    torque: float,
+    angular_velocity: float,
+    ) -> float
+    расчет постоянного тока:
+    21. direct_current_formula(voltage: float, amperage: float, resist: float) -> float
+    расчет переменного тока:
+    22. alternating_current_formula(
+    voltage: float,
+    amperage: float,
+    active_power: float,
+    reactive_power: float,
     ) -> float
 """
 
