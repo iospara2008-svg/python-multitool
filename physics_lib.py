@@ -706,6 +706,38 @@ def force_formula(mass: float, acceleration: float) -> float:
     return mass * acceleration
 
 
+def amperage_formula(
+    charge: float,
+    time: float,
+    voltage: float,
+    resist: float,
+    electrical_power: float,
+) -> float:
+    return charge / time
+    return voltage / resist
+    return electrical_power / voltage
+
+
+def speed_of_sound_formula(
+    adiabatic_compressibility_of_the_medium: float,
+    medium_density: float,
+    adiabatic_index: float,
+    universal_gas_constant: float,
+    absolute_temperature_in_Kelvin: float,
+    molar_mass_of_gas: float,
+    wavelength: float,
+    oscillation_frequency: float,
+    air_temperature_in_Celsius: float,
+) -> float:
+    return math.sqrt(1 / adiabatic_compressibility_of_the_medium * medium_density)
+    return math.sqrt(
+        (adiabatic_index * universal_gas_constant * absolute_temperature_in_Kelvin)
+        / molar_mass_of_gas
+    )
+    return wavelength * oscillation_frequency
+    return 331 + 0.6 * air_temperature_in_Celsius
+
+
 module_help = """
 Модуль physics_lib содержит следующие функции:
     физические формулы:
@@ -838,6 +870,26 @@ module_help = """
     ) -> float
     расчет силы:
     23. force_formula(mass: float, acceleration: float) -> float
+    расчет силы тока:
+    24. amperage_formula(
+    charge: float,
+    time: float,
+    voltage: float,
+    resist: float,
+    electrical_power: float,
+    ) -> float
+    расчет скорости звука:
+    25. speed_of_sound_formula(
+    adiabatic_compressibility_of_the_medium: float,
+    medium_density: float,
+    adiabatic_index: float,
+    universal_gas_constant: float,
+    absolute_temperature_in_Kelvin: float,
+    molar_mass_of_gas: float,
+    wavelength: float,
+    oscillation_frequency: float,
+    air_temperature_in_Celsius: float,
+    ) -> float
 """
 
 if __name__ == "__main__":
