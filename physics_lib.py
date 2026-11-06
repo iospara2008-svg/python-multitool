@@ -529,24 +529,30 @@ def mass_formula(
         ) / pow(speed_of_light, 2)
 
 
-def weight_formula(mass, acceleration_of_gravity=9.81) -> float:
+def weight_formula(
+    mass: float = None,
+    acceleration_of_gravity: float = 9.81,
+) -> float:
     # Основная фомула веса: масса умноженная на ускорение гравитации
     print("weight = mass * acceleration of gravity")
     return mass * acceleration_of_gravity
 
 
-def speed_formula(distance, time) -> float:
+def speed_formula(
+    distance: float = None,
+    time: float = None,
+) -> float:
     # Основная фомула скорости: пройденное расстояние делить на время движения
     print("speed = distance / time")
     return distance / time
 
 
 def the_second_liberation_cosmic_velocity_of_the_body_formula(
-    radius_of_the_planet: float,
-    orbit_altitude: float,
-    orbital_speed: float,
-    the_mass_of_the_planet_in_terms_of_Earth_masses: float,
-    gravitational_constant: float,
+    radius_of_the_planet: float = None,
+    orbit_altitude: float = None,
+    orbital_speed: float = None,
+    the_mass_of_the_planet_in_terms_of_Earth_masses: float = None,
+    gravitational_constant: float = None,
 ) -> float:
     print(
         "math.sqrt((2 * gravitational_constant * the_mass_of_the_planet_in_terms_of_Earth_masses) / (radius_of_the_planet + orbit_altitude))"
@@ -557,44 +563,62 @@ def the_second_liberation_cosmic_velocity_of_the_body_formula(
     )
 
 
-def boyles_law_formula(gas_pressure: float, gas_volume: float) -> float:
+def boyles_law_formula(
+    gas_pressure: float = None,
+    gas_volume: float = None,
+) -> float:
     return gas_pressure * gas_volume  # constant_value_under_given_conditions
 
 
-def volumes_law_formula(gas_volume: float, temperature: float) -> float:
+def volumes_law_formula(
+    gas_volume: float = None,
+    temperature: float = None,
+) -> float:
     return gas_volume / temperature  # const
 
 
-def gay_lussacs_second_law_formula(gas_pressure, temperature: float) -> float:
+def gay_lussacs_second_law_formula(
+    gas_pressure: float = None,
+    temperature: float = None,
+) -> float:
     return gas_pressure / temperature  # gas_pressure
 
 
-def kinetic_energy_of_the_body_formula(mass: float, speed: float) -> float:
+def kinetic_energy_of_the_body_formula(
+    mass: float = None,
+    speed: float = None,
+) -> float:
     return mass * pow(speed, 2) / 2
 
 
 def mixture_concentration_formula(
-    component_mass: float, total_mass_of_all_components_of_the_mixture: float
+    component_mass: float = None,
+    total_mass_of_all_components_of_the_mixture: float = None,
 ) -> float:
     return component_mass / total_mass_of_all_components_of_the_mixture
 
 
-def moment_of_force_formula(force_module: float, shoulder_strength: float) -> float:
+def moment_of_force_formula(
+    force_module: float = None,
+    shoulder_strength: float = None,
+) -> float:
     return force_module * shoulder_strength
 
 
-def newtons_third_law_formula(force_1: float) -> float:
+def newtons_third_law_formula(
+    force_1: float = None,
+) -> float:
     return -force_1  # force_2
 
 
 def molar_mass_of_gas_formula(
-    mass_of_gas: float,
-    amount_of_substance_in_moles: float,
-    gas_density: float,
-    density: float,
-    universal_gas_constant: float,
-    temperature_in_kelvin: float,
-    pressure: float,
+    mass_of_gas: float = None,
+    amount_of_substance_in_moles: float = None,
+    gas_density: float = None,
+    density: float = None,
+    universal_gas_constant: float = None,
+    temperature_in_kelvin: float = None,
+    pressure: float = None,
     molar_volume: float = 22.4,
 ) -> float:
     return mass_of_gas / amount_of_substance_in_moles
@@ -605,31 +629,31 @@ def molar_mass_of_gas_formula(
 
 
 def normal_acceleration_when_moving_in_a_circle_formula(
-    radius: float,
-    speed: float,
-    angular_velocity: float,
+    radius: float = None,
+    speed: float = None,
+    angular_velocity: float = None,
 ) -> float:
     return pow(speed, 2) / radius
     return pow(angular_velocity, 2) * radius
 
 
 def acceleration_formula(
-    initial_speed: float,
-    final_speed: float,
-    time: float,
-    force: float,
-    mass: float,
+    initial_speed: float = None,
+    final_speed: float = None,
+    time: float = None,
+    force: float = None,
+    mass: float = None,
 ) -> float:
     return (final_speed - initial_speed) / time
     return force / mass
 
 
 def the_first_orbital_cosmic_velocity_of_a_body_formula(
-    radius_of_the_planet: float,
-    orbit_altitude: float,
-    orbital_speed: float,
-    the_mass_of_the_planet_in_terms_of_Earth_masses: float,
-    gravitational_constant: float,
+    radius_of_the_planet: float = None,
+    orbit_altitude: float = None,
+    orbital_speed: float = None,
+    the_mass_of_the_planet_in_terms_of_Earth_masses: float = None,
+    gravitational_constant: float = None,
 ) -> float:
     return math.sqrt(
         (gravitational_constant * the_mass_of_the_planet_in_terms_of_Earth_masses)
@@ -638,80 +662,87 @@ def the_first_orbital_cosmic_velocity_of_a_body_formula(
 
 
 def centrifugal_force_formula(
-    mass: float,
-    speed: float,
-    radius: float,
-    angular_velocity: float,
+    mass: float = None,
+    speed: float = None,
+    radius: float = None,
+    angular_velocity: float = None,
 ) -> float:
     return (mass * pow(speed, 2)) / radius
     return mass * pow(angular_velocity, 2) * radius
 
 
 def potential_energy_formula(
-    mass: float,
-    acceleration_of_gravity: float,
-    height: float,
-    body_stiffness_coefficient: float,
-    absolute_deformation: float,
+    mass: float = None,
+    acceleration_of_gravity: float = None,
+    height: float = None,
+    body_stiffness_coefficient: float = None,
+    absolute_deformation: float = None,
 ) -> float:
     return mass * acceleration_of_gravity * height
     return (body_stiffness_coefficient * pow(absolute_deformation, 2)) / 2
 
 
 def tangential_acceleration_formula(
-    final_speed: float,
-    initial_speed: float,
-    delta_time: float,
+    final_speed: float = None,
+    initial_speed: float = None,
+    delta_time: float = None,
 ) -> float:
     return (final_speed - initial_speed) / delta_time
 
 
 def mass_of_matter_over_time_formula(
-    initial_number_of_cores: float,
-    half_life: float,
+    initial_number_of_cores: float = None,
+    half_life: float = None,
 ) -> float:
     return initial_number_of_cores * pow(2, -(1 / half_life))
 
 
 def mechanic_power_formula(
-    work: float,
-    time: float,
-    force: float,
-    speed: float,
-    torque: float,
-    angular_velocity: float,
+    work: float = None,
+    time: float = None,
+    force: float = None,
+    speed: float = None,
+    torque: float = None,
+    angular_velocity: float = None,
 ) -> float:
     return work / time
     return force * speed
     return torque * angular_velocity
 
 
-def direct_current_formula(voltage: float, amperage: float, resist: float) -> float:
+def direct_current_formula(
+    voltage: float = None,
+    amperage: float = None,
+    resist: float = None,
+) -> float:
     return voltage * amperage
     return pow(amperage, 2) * resist
     return pow(voltage, 2) / resist
 
 
 def alternating_current_formula(
-    voltage: float,
-    amperage: float,
-    active_power: float,
-    reactive_power: float,
+    voltage: float = None,
+    amperage: float = None,
+    active_power: float = None,
+    reactive_power: float = None,
 ) -> float:
     return voltage * amperage
     return math.sqrt(pow(active_power, 2) + pow(reactive_power, 2))
 
 
-def force_formula(mass: float, acceleration: float) -> float:
+def force_formula(
+    mass: float = None,
+    acceleration: float = None,
+) -> float:
     return mass * acceleration
 
 
 def amperage_formula(
-    charge: float,
-    time: float,
-    voltage: float,
-    resist: float,
-    electrical_power: float,
+    charge: float = None,
+    time: float = None,
+    voltage: float = None,
+    resist: float = None,
+    electrical_power: float = None,
 ) -> float:
     return charge / time
     return voltage / resist
@@ -719,15 +750,15 @@ def amperage_formula(
 
 
 def speed_of_sound_formula(
-    adiabatic_compressibility_of_the_medium: float,
-    medium_density: float,
-    adiabatic_index: float,
-    universal_gas_constant: float,
-    absolute_temperature_in_Kelvin: float,
-    molar_mass_of_gas: float,
-    wavelength: float,
-    oscillation_frequency: float,
-    air_temperature_in_Celsius: float,
+    adiabatic_compressibility_of_the_medium: float = None,
+    medium_density: float = None,
+    adiabatic_index: float = None,
+    universal_gas_constant: float = None,
+    absolute_temperature_in_Kelvin: float = None,
+    molar_mass_of_gas: float = None,
+    wavelength: float = None,
+    oscillation_frequency: float = None,
+    air_temperature_in_Celsius: float = None,
 ) -> float:
     return math.sqrt(1 / adiabatic_compressibility_of_the_medium * medium_density)
     return math.sqrt(
@@ -739,8 +770,8 @@ def speed_of_sound_formula(
 
 
 def the_third_cosmic_velocity_of_a_body_formula(
-    orbital_speed_of_the_planet: float,
-    the_planets_second_cosmic_velocity: float,
+    orbital_speed_of_the_planet: float = None,
+    the_planets_second_cosmic_velocity: float = None,
 ) -> float:
     return math.sqrt(
         pow((math.sqrt(2) - 1), 2) * pow(orbital_speed_of_the_planet, 2)
@@ -749,9 +780,9 @@ def the_third_cosmic_velocity_of_a_body_formula(
 
 
 def ideal_gas_formula(
-    gas_pressure: float,
-    gas_volume: float,
-    absolute_temperature_in_kelvin: float,
+    gas_pressure: float = None,
+    gas_volume: float = None,
+    absolute_temperature_in_kelvin: float = None,
 ) -> float:
     return (gas_pressure * gas_volume) / absolute_temperature_in_kelvin
 
