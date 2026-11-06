@@ -738,6 +738,24 @@ def speed_of_sound_formula(
     return 331 + 0.6 * air_temperature_in_Celsius
 
 
+def the_third_cosmic_velocity_of_a_body_formula(
+    orbital_speed_of_the_planet: float,
+    the_planets_second_cosmic_velocity: float,
+) -> float:
+    return math.sqrt(
+        pow((math.sqrt(2) - 1), 2) * pow(orbital_speed_of_the_planet, 2)
+        + pow(the_planets_second_cosmic_velocity, 2)
+    )
+
+
+def ideal_gas_formula(
+    gas_pressure: float,
+    gas_volume: float,
+    absolute_temperature_in_kelvin: float,
+) -> float:
+    return (gas_pressure * gas_volume) / absolute_temperature_in_kelvin
+
+
 module_help = """
 Модуль physics_lib содержит следующие функции:
     физические формулы:
@@ -889,6 +907,17 @@ module_help = """
     wavelength: float,
     oscillation_frequency: float,
     air_temperature_in_Celsius: float,
+    ) -> float
+    расчет третьей космической скорости тела:
+    26. the_third_cosmic_velocity_of_a_body_formula(
+    orbital_speed_of_the_planet: float,
+    the_planets_second_cosmic_velocity: float,
+    ) -> float
+    расчет идеального газа:
+    27. ideal_gas_formula(
+    gas_pressure: float,
+    gas_volume: float,
+    absolute_temperature_in_kelvin: float,
     ) -> float
 """
 
