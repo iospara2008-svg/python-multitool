@@ -501,7 +501,7 @@ def mass_formula(
         and m_2 is not None
         and distance is not None
     ):
-        return force_gr * pow(distance, 2) / (gravitational_constant * pow(m_2, 2))
+        return force_gr * pow(distance, 2) / (gravitational_constant * m_2)
     # print("force_gr = gravitational_constant * (m_1 * m_2) / distance^2")
     # return gravitational_constant * (m_1 * m_2) / pow(distance, 2)
     if density is not None and volume is not None:
