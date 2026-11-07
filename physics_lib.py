@@ -469,28 +469,24 @@ class Temperature(unit_base):
 # Нужно написать отдельный конвертер для температуры
 
 
-
-
 def find_value(
-    value_name: str,
-    force=None,
-    acceleration=None,
-    m_1=None,
-    m_2=None,
-    distance=None,
-    density=None,
-    volume=None,
-    amount_of_substance_in_moles=None,
-    molar_mass=None,
-    mass_of_one_molecule=None,
-    number_of_particles=None,
-    weight_force=None,
-    total_energy_of_a_free_body=None,
-    speed_of_light=None,
-    impulse=None,
-    force_gr=None,
-    gravitational_constant=6.6743015 * pow(10, -11),
-    acceleration_of_gravity=9.81,
+    value_name: str = None,
+    force: float = None,
+    acceleration: float = None,
+    m_1: float = None,
+    m_2: float = None,
+    distance: float = None,
+    density: float = None,
+    volume: float = None,
+    amount_of_substance_in_moles: float = None,
+    molar_mass: float = None,
+    mass_of_one_molecule: float = None,
+    number_of_particles: float = None,
+    weight_force: float = None,
+    total_energy_of_a_free_body: float = None,
+    speed_of_light: float = None,
+    impulse: float = None,
+    force_gr: float = None,
     mass: float = None,
     time: float = None,
     radius_of_the_planet: float = None,
@@ -511,7 +507,6 @@ def find_value(
     universal_gas_constant: float = None,
     temperature_in_kelvin: float = None,
     pressure: float = None,
-    molar_volume: float = 22.4,
     radius: float = None,
     angular_velocity: float = None,
     initial_speed: float = None,
@@ -542,6 +537,9 @@ def find_value(
     orbital_speed_of_the_planet: float = None,
     the_planets_second_cosmic_velocity: float = None,
     absolute_temperature_in_kelvin: float = None,
+    gravitational_constant: float = 6.6743015 * pow(10, -11),
+    acceleration_of_gravity: float = 9.81,
+    molar_volume: float = 22.4,
 ) -> float:
     if force is not None and acceleration is not None:
         print("force = mass * acceleration -> mass = force / acceleration")
