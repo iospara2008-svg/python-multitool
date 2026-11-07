@@ -499,52 +499,64 @@ def mass_formula(
     gravitational_constant=6.6743015 * pow(10, -11),
     acceleration_of_gravity=9.81,
 ) -> float:  # Inertial mass
+    results: list = None
+
     if check(force, acceleration):
         print("force = mass * acceleration -> mass = force / acceleration")
-        return force / acceleration
+        results.append(force / acceleration)
     if check(force_gr, gravitational_constant, m_2, distance):
-        return force_gr * pow(distance, 2) / (gravitational_constant * m_2)
+        results.append(force_gr * pow(distance, 2) / (gravitational_constant * m_2))
     # print("force_gr = gravitational_constant * (m_1 * m_2) / distance^2")
     # return gravitational_constant * (m_1 * m_2) / pow(distance, 2)
     if check(density, volume):
         print("mass = density * volume")
-        return density * volume
+        results.append(density * volume)
     if check(amount_of_substance_in_moles, molar_mass):
         print("mass = amount of substance in moles * molar mass")
-        return amount_of_substance_in_moles * molar_mass
+        results.append(amount_of_substance_in_moles * molar_mass)
     if check(mass_of_one_molecule, number_of_particles):
         print("mass = mass of one molecule/atom * number of particles")
-        return mass_of_one_molecule * number_of_particles
+        results.append(mass_of_one_molecule * number_of_particles)
     if check(weight_force, acceleration_of_gravity):
         print("mass = weight force / acceleration of gravity")
-        return weight_force / acceleration_of_gravity
+        results.append(weight_force / acceleration_of_gravity)
     if check(total_energy_of_a_free_body, speed_of_light, impulse):
         print(
             "mass^2 = (total energy of a free body^2 / speed of light^4) - (impulse^2 / speed of light^2)"
         )
-        return (pow(total_energy_of_a_free_body, 2) / pow(speed_of_light, 4)) - pow(
-            impulse, 2
-        ) / pow(speed_of_light, 2)
+        results.append(
+            pow(total_energy_of_a_free_body, 2) / pow(speed_of_light, 4)
+        ) - pow(impulse, 2) / pow(speed_of_light, 2)
+
+    return results
 
 
 def weight_formula(
     mass: float = None,
     acceleration_of_gravity: float = 9.81,
 ) -> float:
+    results: list = None
+
     # Основная фомула веса: масса умноженная на ускорение гравитации
     if check(mass, acceleration_of_gravity):
         print("weight = mass * acceleration of gravity")
-        return mass * acceleration_of_gravity
+        results.append(mass * acceleration_of_gravity)
+
+    return results
 
 
 def speed_formula(
     distance: float = None,
     time: float = None,
 ) -> float:
+    results: list = None
+
     # Основная фомула скорости: пройденное расстояние делить на время движения
     if check(distance, time):
         print("speed = distance / time")
-        return distance / time
+        results.append(distance / time)
+
+    return results
 
 
 def the_second_liberation_cosmic_velocity_of_the_body_formula(
@@ -554,6 +566,8 @@ def the_second_liberation_cosmic_velocity_of_the_body_formula(
     the_mass_of_the_planet_in_terms_of_Earth_masses: float = None,
     gravitational_constant: float = 6.6743015 * pow(10, -11),
 ) -> float:
+    results: list = None
+
     if check(
         radius_of_the_planet,
         orbit_altitude,
@@ -564,32 +578,47 @@ def the_second_liberation_cosmic_velocity_of_the_body_formula(
         print(
             "math.sqrt((2 * gravitational_constant * the_mass_of_the_planet_in_terms_of_Earth_masses) / (radius_of_the_planet + orbit_altitude))"
         )
-        return math.sqrt(
-            (
-                2
-                * gravitational_constant
-                * the_mass_of_the_planet_in_terms_of_Earth_masses
+        results.append(
+            math.sqrt(
+                (
+                    2
+                    * gravitational_constant
+                    * the_mass_of_the_planet_in_terms_of_Earth_masses
+                )
+                / (radius_of_the_planet + orbit_altitude)
             )
-            / (radius_of_the_planet + orbit_altitude)
         )
+
+    return results
 
 
 def boyles_law_formula(
     gas_pressure: float = None,
     gas_volume: float = None,
 ) -> float:
+    results: list = None
+
     if check(gas_pressure, gas_volume):
-        return gas_pressure * gas_volume  # constant_value_under_given_conditions
+        results.append(
+            gas_pressure * gas_volume
+        )  # constant_value_under_given_conditions
+
+    return results
 
 
 def volumes_law_formula(
     gas_volume: float = None,
     temperature: float = None,
 ) -> float:
+    results: list = None
+
     if check(gas_volume, temperature):
-        return gas_volume / temperature  # const
+        results.append(gas_volume / temperature)  # const
+
+    return results
 
 
+# Надо дописать results
 def gay_lussacs_second_law_formula(
     gas_pressure: float = None,
     temperature: float = None,
