@@ -529,14 +529,13 @@ def find_value(
     adiabatic_compressibility_of_the_medium: float = None,
     medium_density: float = None,
     adiabatic_index: float = None,
-    absolute_temperature_in_Kelvin: float = None,
+    absolute_temperature_in_kelvin: float = None,
     molar_mass_of_gas: float = None,
     wavelength: float = None,
     oscillation_frequency: float = None,
     air_temperature_in_Celsius: float = None,
     orbital_speed_of_the_planet: float = None,
     the_planets_second_cosmic_velocity: float = None,
-    absolute_temperature_in_kelvin: float = None,
     gravitational_constant: float = 6.6743015 * pow(10, -11),
     acceleration_of_gravity: float = 9.81,
     molar_volume: float = 22.4,
@@ -629,7 +628,7 @@ def find_value(
     return electrical_power / voltage
     return math.sqrt(1 / adiabatic_compressibility_of_the_medium * medium_density)
     return math.sqrt(
-        (adiabatic_index * universal_gas_constant * absolute_temperature_in_Kelvin)
+        (adiabatic_index * universal_gas_constant * absolute_temperature_in_kelvin)
         / molar_mass_of_gas
     )
     return wavelength * oscillation_frequency
