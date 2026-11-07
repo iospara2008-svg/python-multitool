@@ -469,6 +469,13 @@ class Temperature(unit_base):
 # Нужно написать отдельный конвертер для температуры
 
 
+def check(*args):
+    for arg in args:
+        if arg is None:
+            return False
+    return True
+
+
 # Mass Inertial and Gravitational
 # Масса - скалярная величина, определяющая инертные и гравитационные свойства тел.
 # Масса эквивалентна энергии покоя
@@ -492,35 +499,26 @@ def mass_formula(
     gravitational_constant=6.6743015 * pow(10, -11),
     acceleration_of_gravity=9.81,
 ) -> float:  # Inertial mass
-    if force is not None and acceleration is not None:
+    if check(force, acceleration):
         print("force = mass * acceleration -> mass = force / acceleration")
         return force / acceleration
-    if (
-        force_gr is not None
-        and gravitational_constant is not None
-        and m_2 is not None
-        and distance is not None
-    ):
+    if check(force_gr, gravitational_constant, m_2, distance):
         return force_gr * pow(distance, 2) / (gravitational_constant * m_2)
     # print("force_gr = gravitational_constant * (m_1 * m_2) / distance^2")
     # return gravitational_constant * (m_1 * m_2) / pow(distance, 2)
-    if density is not None and volume is not None:
+    if check(density, volume):
         print("mass = density * volume")
         return density * volume
-    if amount_of_substance_in_moles is not None and molar_mass is not None:
+    if check(amount_of_substance_in_moles, molar_mass):
         print("mass = amount of substance in moles * molar mass")
         return amount_of_substance_in_moles * molar_mass
-    if mass_of_one_molecule is not None and number_of_particles is not None:
+    if check(mass_of_one_molecule, number_of_particles):
         print("mass = mass of one molecule/atom * number of particles")
         return mass_of_one_molecule * number_of_particles
-    if weight_force is not None and acceleration_of_gravity is not None:
+    if check(weight_force, acceleration_of_gravity):
         print("mass = weight force / acceleration of gravity")
         return weight_force / acceleration_of_gravity
-    if (
-        total_energy_of_a_free_body is not None
-        and speed_of_light is not None
-        and impulse is not None
-    ):
+    if check(total_energy_of_a_free_body, speed_of_light, impulse):
         print(
             "mass^2 = (total energy of a free body^2 / speed of light^4) - (impulse^2 / speed of light^2)"
         )
