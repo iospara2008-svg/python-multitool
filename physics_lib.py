@@ -496,7 +496,7 @@ def mass_formula(
     speed_of_light=None,
     impulse=None,
     force_gr=None,
-    gravitational_constant=6.6743015 * pow(10, -11),
+    gravitational_constant=6.6743015 * 10**-11,
     acceleration_of_gravity=9.81,
 ) -> float:  # Inertial mass
     results: list = []
@@ -505,7 +505,7 @@ def mass_formula(
         print("force = mass * acceleration -> mass = force / acceleration")
         results.append(force / acceleration)
     if check(force_gr, gravitational_constant, m_2, distance):
-        results.append(force_gr * pow(distance, 2) / (gravitational_constant * m_2))
+        results.append(force_gr * distance**2 / (gravitational_constant * m_2))
     # print("force_gr = gravitational_constant * (m_1 * m_2) / distance^2")
     # return gravitational_constant * (m_1 * m_2) / pow(distance, 2)
     if check(density, volume):
@@ -525,8 +525,8 @@ def mass_formula(
             "mass^2 = (total energy of a free body^2 / speed of light^4) - (impulse^2 / speed of light^2)"
         )
         results.append(
-            (pow(total_energy_of_a_free_body, 2) / pow(speed_of_light, 4))
-            - pow(impulse, 2) / pow(speed_of_light, 2)
+            (total_energy_of_a_free_body**2 / speed_of_light**4)
+            - impulse**2 / speed_of_light**2
         )
 
     return results
@@ -638,7 +638,7 @@ def kinetic_energy_of_the_body_formula(
     results: list = []
 
     if check(mass, speed):
-        results.append(mass * pow(speed, 2) / 2)
+        results.append(mass * speed**2 / 2)
 
     return results
 
@@ -710,9 +710,9 @@ def normal_acceleration_when_moving_in_a_circle_formula(
     results: list = []
 
     if check(speed, radius):
-        results.append(pow(speed, 2) / radius)
+        results.append(speed**2 / radius)
     if check(angular_velocity, radius):
-        results.append(pow(angular_velocity, 2) * radius)
+        results.append(angular_velocity**2 * radius)
 
     return results
 
@@ -772,9 +772,9 @@ def centrifugal_force_formula(
     results: list = []
 
     if check(mass, speed, radius):
-        results.append((mass * pow(speed, 2)) / radius)
+        results.append((mass * speed**2) / radius)
     if check(mass, angular_velocity, radius):
-        results.append(mass * pow(angular_velocity, 2) * radius)
+        results.append(mass * angular_velocity**2 * radius)
 
     return results
 
@@ -791,7 +791,7 @@ def potential_energy_formula(
     if check(mass, acceleration_of_gravity, height):
         results.append(mass * acceleration_of_gravity * height)
     if check(body_stiffness_coefficient, absolute_deformation):
-        results.append((body_stiffness_coefficient * pow(absolute_deformation, 2)) / 2)
+        results.append((body_stiffness_coefficient * absolute_deformation**2) / 2)
 
     return results
 
@@ -816,7 +816,7 @@ def mass_of_matter_over_time_formula(
     results: list = []
 
     if check(initial_number_of_cores, half_life):
-        results.append(initial_number_of_cores * pow(2, -(1 / half_life)))
+        results.append(initial_number_of_cores * (1 / half_life) ** 2)
 
     return results
 
@@ -851,9 +851,9 @@ def direct_current_formula(
     if check(voltage, amperage):
         results.append(voltage * amperage)
     if check(amperage, resist):
-        results.append(pow(amperage, 2) * resist)
+        results.append(amperage**2 * resist)
     if check(voltage, resist):
-        results.append(pow(voltage, 2) / resist)
+        results.append(voltage**2 / resist)
 
     return results
 
@@ -869,7 +869,7 @@ def alternating_current_formula(
     if check(voltage, amperage):
         results.append(voltage * amperage)
     if check(active_power, reactive_power):
-        results.append(math.sqrt(pow(active_power, 2) + pow(reactive_power, 2)))
+        results.append(math.sqrt(active_power**2 + reactive_power**2))
 
     return results
 
@@ -955,8 +955,8 @@ def the_third_cosmic_velocity_of_a_body_formula(
     if check(orbital_speed_of_the_planet, the_planets_second_cosmic_velocity):
         results.append(
             math.sqrt(
-                pow((math.sqrt(2) - 1), 2) * pow(orbital_speed_of_the_planet, 2)
-                + pow(the_planets_second_cosmic_velocity, 2)
+                (math.sqrt(2) - 1) ** 2 * orbital_speed_of_the_planet**2
+                + the_planets_second_cosmic_velocity**2
             )
         )
 
