@@ -149,9 +149,9 @@ class Time(unit_base):
     exasecond: bool = False
 
     dimensions = {
-        "nanosecond": 1e9,
-        "microsecond": 1e6,
-        "millisecond": 1e3,
+        "nanosecond": 1e-9,
+        "microsecond": 1e-6,
+        "millisecond": 1e-3,
         "second": 1,
         "minute": 60,
         "hour": 60 * 60,
