@@ -696,8 +696,8 @@ def molar_mass_of_gas_formula(
         results.append(gas_density * molar_volume)  # Through molar volume
     if check(density, universal_gas_constant, temperature_in_kelvin, pressure):
         results.append(
-            density * universal_gas_constant * temperature_in_kelvin
-        ) / pressure  # From the Mendeleev-Clapeyron equation
+            (density * universal_gas_constant * temperature_in_kelvin) / pressure
+        )  # From the Mendeleev-Clapeyron equation
 
     return results
 
