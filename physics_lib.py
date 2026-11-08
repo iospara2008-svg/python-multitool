@@ -525,8 +525,9 @@ def mass_formula(
             "mass^2 = (total energy of a free body^2 / speed of light^4) - (impulse^2 / speed of light^2)"
         )
         results.append(
-            pow(total_energy_of_a_free_body, 2) / pow(speed_of_light, 4)
-        ) - pow(impulse, 2) / pow(speed_of_light, 2)
+            (pow(total_energy_of_a_free_body, 2) / pow(speed_of_light, 4))
+            - pow(impulse, 2) / pow(speed_of_light, 2)
+        )
 
     return results
 
