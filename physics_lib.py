@@ -149,9 +149,9 @@ class Time(unit_base):
     exasecond: bool = False
 
     dimensions = {
-        "nanosecond": 1e9,
-        "microsecond": 1e6,
-        "millisecond": 1e3,
+        "nanosecond": 1e-9,
+        "microsecond": 1e-6,
+        "millisecond": 1e-3,
         "second": 1,
         "minute": 60,
         "hour": 60 * 60,
@@ -465,211 +465,613 @@ class Temperature(unit_base):
         self.value = new_value
         self.dimension = to_dimension
 
+    # Нужно написать отдельный конвертер для температуры
 
-# Нужно написать отдельный конвертер для температуры
+
+force: float = (None,)
+acceleration: float = (None,)
+m_1: float = (None,)
+m_2: float = (None,)
+distance: float = (None,)
+density: float = (None,)
+volume: float = (None,)
+amount_of_substance_in_moles: float = (None,)
+molar_mass: float = (None,)
+mass_of_one_molecule: float = (None,)
+number_of_particles: float = (None,)
+weight_force: float = (None,)
+total_energy_of_a_free_body: float = (None,)
+speed_of_light: float = (None,)
+impulse: float = (None,)
+force_gr: float = (None,)
+mass: float = (None,)
+time: float = (None,)
+radius_of_the_planet: float = (None,)
+orbit_altitude: float = (None,)
+orbital_speed: float = (None,)
+the_mass_of_the_planet_in_terms_of_Earth_masses: float = (None,)
+gas_pressure: float = (None,)
+gas_volume: float = (None,)
+temperature: float = (None,)
+speed: float = (None,)
+component_mass: float = (None,)
+total_mass_of_all_components_of_the_mixture: float = (None,)
+force_module: float = (None,)
+shoulder_strength: float = (None,)
+force_1: float = (None,)
+mass_of_gas: float = (None,)
+gas_density: float = (None,)
+universal_gas_constant: float = (None,)
+temperature_in_kelvin: float = (None,)
+pressure: float = (None,)
+radius: float = (None,)
+angular_velocity: float = (None,)
+initial_speed: float = (None,)
+final_speed: float = (None,)
+height: float = (None,)
+body_stiffness_coefficient: float = (None,)
+absolute_deformation: float = (None,)
+delta_time: float = (None,)
+initial_number_of_cores: float = (None,)
+half_life: float = (None,)
+work: float = (None,)
+torque: float = (None,)
+voltage: float = (None,)
+amperage: float = (None,)
+resist: float = (None,)
+active_power: float = (None,)
+reactive_power: float = (None,)
+charge: float = (None,)
+electrical_power: float = (None,)
+adiabatic_compressibility_of_the_medium: float = (None,)
+medium_density: float = (None,)
+adiabatic_index: float = (None,)
+absolute_temperature_in_kelvin: float = (None,)
+molar_mass_of_gas: float = (None,)
+wavelength: float = (None,)
+oscillation_frequency: float = (None,)
+air_temperature_in_Celsius: float = (None,)
+orbital_speed_of_the_planet: float = (None,)
+the_planets_second_cosmic_velocity: float = (None,)
+gravitational_constant: float = (6.6743015 * pow(10, -11),)
+acceleration_of_gravity: float = (9.81,)
+molar_volume: float = (22.4,)
 
 
-def find_value(
-    value_name: str = None,
-    force: float = None,
-    acceleration: float = None,
-    m_1: float = None,
-    m_2: float = None,
-    distance: float = None,
-    density: float = None,
-    volume: float = None,
-    amount_of_substance_in_moles: float = None,
-    molar_mass: float = None,
-    mass_of_one_molecule: float = None,
-    number_of_particles: float = None,
-    weight_force: float = None,
-    total_energy_of_a_free_body: float = None,
-    speed_of_light: float = None,
-    impulse: float = None,
-    force_gr: float = None,
-    mass: float = None,
-    time: float = None,
-    radius_of_the_planet: float = None,
-    orbit_altitude: float = None,
-    orbital_speed: float = None,
-    the_mass_of_the_planet_in_terms_of_Earth_masses: float = None,
-    gas_pressure: float = None,
-    gas_volume: float = None,
-    temperature: float = None,
-    speed: float = None,
-    component_mass: float = None,
-    total_mass_of_all_components_of_the_mixture: float = None,
-    force_module: float = None,
-    shoulder_strength: float = None,
-    force_1: float = None,
-    mass_of_gas: float = None,
-    gas_density: float = None,
-    universal_gas_constant: float = None,
-    temperature_in_kelvin: float = None,
-    pressure: float = None,
-    radius: float = None,
-    angular_velocity: float = None,
-    initial_speed: float = None,
-    final_speed: float = None,
-    height: float = None,
-    body_stiffness_coefficient: float = None,
-    absolute_deformation: float = None,
-    delta_time: float = None,
-    initial_number_of_cores: float = None,
-    half_life: float = None,
-    work: float = None,
-    torque: float = None,
-    voltage: float = None,
-    amperage: float = None,
-    resist: float = None,
-    active_power: float = None,
-    reactive_power: float = None,
-    charge: float = None,
-    electrical_power: float = None,
-    adiabatic_compressibility_of_the_medium: float = None,
-    medium_density: float = None,
-    adiabatic_index: float = None,
-    absolute_temperature_in_kelvin: float = None,
-    molar_mass_of_gas: float = None,
-    wavelength: float = None,
-    oscillation_frequency: float = None,
-    air_temperature_in_Celsius: float = None,
-    orbital_speed_of_the_planet: float = None,
-    the_planets_second_cosmic_velocity: float = None,
-    gravitational_constant: float = 6.6743015 * pow(10, -11),
-    acceleration_of_gravity: float = 9.81,
-    molar_volume: float = 22.4,
-) -> float:
-    if force is not None and acceleration is not None:
+def check(*args):
+    for arg in args:
+        if arg is None:
+            return False
+    return True
+
+
+# Mass Inertial and Gravitational
+# Масса - скалярная величина, определяющая инертные и гравитационные свойства тел.
+# Масса эквивалентна энергии покоя
+def mass_formula() -> list:  # Inertial mass
+    results: list = []
+
+    if check(force, acceleration):
         print("force = mass * acceleration -> mass = force / acceleration")
-        return force / acceleration
-    if (
-        force_gr is not None
-        and gravitational_constant is not None
-        and m_2 is not None
-        and distance is not None
-    ):
-        return force_gr * pow(distance, 2) / (gravitational_constant * m_2)
+        results.append(force / acceleration)
+    if check(force_gr, gravitational_constant, m_2, distance):
+        results.append(force_gr * distance**2 / (gravitational_constant * m_2))
     # print("force_gr = gravitational_constant * (m_1 * m_2) / distance^2")
     # return gravitational_constant * (m_1 * m_2) / pow(distance, 2)
-    if density is not None and volume is not None:
+    if check(density, volume):
         print("mass = density * volume")
-        return density * volume
-    if amount_of_substance_in_moles is not None and molar_mass is not None:
+        results.append(density * volume)
+    if check(amount_of_substance_in_moles, molar_mass):
         print("mass = amount of substance in moles * molar mass")
-        return amount_of_substance_in_moles * molar_mass
-    if mass_of_one_molecule is not None and number_of_particles is not None:
+        results.append(amount_of_substance_in_moles * molar_mass)
+    if check(mass_of_one_molecule, number_of_particles):
         print("mass = mass of one molecule/atom * number of particles")
-        return mass_of_one_molecule * number_of_particles
-    if weight_force is not None and acceleration_of_gravity is not None:
+        results.append(mass_of_one_molecule * number_of_particles)
+    if check(weight_force, acceleration_of_gravity):
         print("mass = weight force / acceleration of gravity")
-        return weight_force / acceleration_of_gravity
-    if (
-        total_energy_of_a_free_body is not None
-        and speed_of_light is not None
-        and impulse is not None
-    ):
+        results.append(weight_force / acceleration_of_gravity)
+    if check(total_energy_of_a_free_body, speed_of_light, impulse):
         print(
             "mass^2 = (total energy of a free body^2 / speed of light^4) - (impulse^2 / speed of light^2)"
         )
-        return (pow(total_energy_of_a_free_body, 2) / pow(speed_of_light, 4)) - pow(
-            impulse, 2
-        ) / pow(speed_of_light, 2)
+        results.append(
+            (total_energy_of_a_free_body**2 / speed_of_light**4)
+            - impulse**2 / speed_of_light**2
+        )
+
+    return results
+
+
+def weight_formula() -> list:
+    results: list = []
+
     # Основная фомула веса: масса умноженная на ускорение гравитации
-    print("weight = mass * acceleration of gravity")
-    return mass * acceleration_of_gravity
+    if check(mass, acceleration_of_gravity):
+        print("weight = mass * acceleration of gravity")
+        results.append(mass * acceleration_of_gravity)
+
+    return results
+
+
+def speed_formula() -> list:
+    results: list = []
+
     # Основная фомула скорости: пройденное расстояние делить на время движения
-    print("speed = distance / time")
-    return distance / time
-    print(
-        "math.sqrt((2 * gravitational_constant * the_mass_of_the_planet_in_terms_of_Earth_masses) / (radius_of_the_planet + orbit_altitude))"
-    )
-    return math.sqrt(
-        (2 * gravitational_constant * the_mass_of_the_planet_in_terms_of_Earth_masses)
-        / (radius_of_the_planet + orbit_altitude)
-    )
-    return gas_pressure * gas_volume  # constant_value_under_given_conditions
-    return gas_volume / temperature  # const
-    return gas_pressure / temperature  # gas_pressure
-    return mass * pow(speed, 2) / 2
-    return component_mass / total_mass_of_all_components_of_the_mixture
-    return force_module * shoulder_strength
-    return -force_1  # force_2
-    return mass_of_gas / amount_of_substance_in_moles
-    return gas_density * molar_volume  # Through molar volume
-    return (
-        density * universal_gas_constant * temperature_in_kelvin
-    ) / pressure  # From the Mendeleev-Clapeyron equation
-    return pow(speed, 2) / radius
-    return pow(angular_velocity, 2) * radius
-    return (final_speed - initial_speed) / time
-    return force / mass
-    return math.sqrt(
-        (gravitational_constant * the_mass_of_the_planet_in_terms_of_Earth_masses)
-        / (radius_of_the_planet + orbit_altitude)
-    )
-    return (mass * pow(speed, 2)) / radius
-    return mass * pow(angular_velocity, 2) * radius
-    return mass * acceleration_of_gravity * height
-    return (body_stiffness_coefficient * pow(absolute_deformation, 2)) / 2
-    return (final_speed - initial_speed) / delta_time
-    return initial_number_of_cores * pow(2, -(1 / half_life))
-    return work / time
-    return force * speed
-    return torque * angular_velocity
-    return voltage * amperage
-    return pow(amperage, 2) * resist
-    return pow(voltage, 2) / resist
-    return voltage * amperage
-    return math.sqrt(pow(active_power, 2) + pow(reactive_power, 2))
-    return mass * acceleration
-    return charge / time
-    return voltage / resist
-    return electrical_power / voltage
-    return math.sqrt(1 / adiabatic_compressibility_of_the_medium * medium_density)
-    return math.sqrt(
-        (adiabatic_index * universal_gas_constant * absolute_temperature_in_kelvin)
-        / molar_mass_of_gas
-    )
-    return wavelength * oscillation_frequency
-    return 331 + 0.6 * air_temperature_in_Celsius
-    return math.sqrt(
-        pow((math.sqrt(2) - 1), 2) * pow(orbital_speed_of_the_planet, 2)
-        + pow(the_planets_second_cosmic_velocity, 2)
-    )
-    return (gas_pressure * gas_volume) / absolute_temperature_in_kelvin
+    if check(distance, time):
+        print("speed = distance / time")
+        results.append(distance / time)
+
+    return results
+
+
+def the_second_liberation_cosmic_velocity_of_the_body_formula() -> list:
+    results: list = []
+
+    if check(
+        radius_of_the_planet,
+        orbit_altitude,
+        orbital_speed,
+        the_mass_of_the_planet_in_terms_of_Earth_masses,
+        gravitational_constant,
+    ):
+        print(
+            "math.sqrt((2 * gravitational_constant * the_mass_of_the_planet_in_terms_of_Earth_masses) / (radius_of_the_planet + orbit_altitude))"
+        )
+        results.append(
+            math.sqrt(
+                (
+                    2
+                    * gravitational_constant
+                    * the_mass_of_the_planet_in_terms_of_Earth_masses
+                )
+                / (radius_of_the_planet + orbit_altitude)
+            )
+        )
+
+    return results
+
+
+def boyles_law_formula() -> list:
+    results: list = []
+
+    if check(gas_pressure, gas_volume):
+        results.append(
+            gas_pressure * gas_volume
+        )  # constant_value_under_given_conditions
+
+    return results
+
+
+def volumes_law_formula() -> list:
+    results: list = []
+
+    if check(gas_volume, temperature):
+        results.append(gas_volume / temperature)  # const
+
+    return results
+
+
+def gay_lussacs_second_law_formula() -> list:
+    results: list = []
+
+    if check(gas_pressure, temperature):
+        results.append(gas_pressure / temperature)  # gas_pressure
+
+    return results
+
+
+def kinetic_energy_of_the_body_formula() -> list:
+    results: list = []
+
+    if check(mass, speed):
+        results.append(mass * speed**2 / 2)
+
+    return results
+
+
+def mixture_concentration_formula() -> list:
+    results: list = []
+
+    if check(component_mass, total_mass_of_all_components_of_the_mixture):
+        results.append(component_mass / total_mass_of_all_components_of_the_mixture)
+
+    return results
+
+
+def moment_of_force_formula() -> list:
+    results: list = []
+
+    if check(force_module, shoulder_strength):
+        results.append(force_module * shoulder_strength)
+
+    return results
+
+
+def newtons_third_law_formula() -> list:
+    results: list = []
+
+    if check(force_1):
+        results.append(-force_1)  # force_2
+
+    return results
+
+
+def molar_mass_of_gas_formula() -> list:
+    results: list = []
+
+    if check(mass_of_gas, amount_of_substance_in_moles):
+        results.append(mass_of_gas / amount_of_substance_in_moles)
+    if check(gas_density, molar_volume):
+        results.append(gas_density * molar_volume)  # Through molar volume
+    if check(density, universal_gas_constant, temperature_in_kelvin, pressure):
+        results.append(
+            (density * universal_gas_constant * temperature_in_kelvin) / pressure
+        )  # From the Mendeleev-Clapeyron equation
+
+    return results
+
+
+def normal_acceleration_when_moving_in_a_circle_formula() -> list:
+    results: list = []
+
+    if check(speed, radius):
+        results.append(speed**2 / radius)
+    if check(angular_velocity, radius):
+        results.append(angular_velocity**2 * radius)
+
+    return results
+
+
+def acceleration_formula() -> list:
+    results: list = []
+
+    if check(final_speed, initial_speed, time):
+        results.append((final_speed - initial_speed) / time)
+    if check(force, mass):
+        results.append(force / mass)
+
+    return results
+
+
+def the_first_orbital_cosmic_velocity_of_a_body_formula() -> list:
+    results: list = []
+
+    if check(
+        radius_of_the_planet,
+        orbit_altitude,
+        orbital_speed,
+        the_mass_of_the_planet_in_terms_of_Earth_masses,
+        gravitational_constant,
+    ):
+        results.append(
+            math.sqrt(
+                (
+                    gravitational_constant
+                    * the_mass_of_the_planet_in_terms_of_Earth_masses
+                )
+                / (radius_of_the_planet + orbit_altitude)
+            )
+        )
+
+    return results
+
+
+def centrifugal_force_formula() -> list:
+    results: list = []
+
+    if check(mass, speed, radius):
+        results.append((mass * speed**2) / radius)
+    if check(mass, angular_velocity, radius):
+        results.append(mass * angular_velocity**2 * radius)
+
+    return results
+
+
+def potential_energy_formula() -> list:
+    results: list = []
+
+    if check(mass, acceleration_of_gravity, height):
+        results.append(mass * acceleration_of_gravity * height)
+    if check(body_stiffness_coefficient, absolute_deformation):
+        results.append((body_stiffness_coefficient * absolute_deformation**2) / 2)
+
+    return results
+
+
+def tangential_acceleration_formula() -> list:
+    results: list = []
+
+    if check(final_speed, initial_speed, delta_time):
+        results.append((final_speed - initial_speed) / delta_time)
+
+    return results
+
+
+def mass_of_matter_over_time_formula() -> list:
+    results: list = []
+
+    if check(initial_number_of_cores, half_life):
+        results.append(initial_number_of_cores * (1 / half_life) ** 2)
+
+    return results
+
+
+def mechanic_power_formula() -> list:
+    results: list = []
+
+    if check(work, time):
+        results.append(work / time)
+    if check(force, speed):
+        results.append(force * speed)
+    if check(torque, angular_velocity):
+        results.append(torque * angular_velocity)
+
+    return results
+
+
+def direct_current_formula() -> list:
+    results: list = []
+
+    if check(voltage, amperage):
+        results.append(voltage * amperage)
+    if check(amperage, resist):
+        results.append(amperage**2 * resist)
+    if check(voltage, resist):
+        results.append(voltage**2 / resist)
+
+    return results
+
+
+def alternating_current_formula() -> list:
+    results: list = []
+
+    if check(voltage, amperage):
+        results.append(voltage * amperage)
+    if check(active_power, reactive_power):
+        results.append(math.sqrt(active_power**2 + reactive_power**2))
+
+    return results
+
+
+def force_formula() -> list:
+    results: list = []
+
+    if check(mass, acceleration):
+        results.append(mass * acceleration)
+
+    return results
+
+
+def amperage_formula() -> list:
+    results: list = []
+
+    if check(charge, time):
+        results.append(charge / time)
+    if check(voltage, resist):
+        results.append(voltage / resist)
+    if check(electrical_power, voltage):
+        results.append(electrical_power / voltage)
+
+    return results
+
+
+def speed_of_sound_formula() -> list:
+    results: list = []
+
+    if check(adiabatic_compressibility_of_the_medium, medium_density):
+        results.append(
+            math.sqrt(1 / adiabatic_compressibility_of_the_medium * medium_density)
+        )
+    if check(
+        adiabatic_index,
+        universal_gas_constant,
+        absolute_temperature_in_kelvin,
+        molar_mass_of_gas,
+    ):
+        results.append(
+            math.sqrt(
+                (
+                    adiabatic_index
+                    * universal_gas_constant
+                    * absolute_temperature_in_kelvin
+                )
+                / molar_mass_of_gas
+            )
+        )
+    if check(wavelength, oscillation_frequency):
+        results.append(wavelength * oscillation_frequency)
+    if check(air_temperature_in_Celsius):
+        results.append(331 + 0.6 * air_temperature_in_Celsius)
+
+    return results
+
+
+def the_third_cosmic_velocity_of_a_body_formula() -> list:
+    results: list = []
+
+    if check(orbital_speed_of_the_planet, the_planets_second_cosmic_velocity):
+        results.append(
+            math.sqrt(
+                (math.sqrt(2) - 1) ** 2 * orbital_speed_of_the_planet**2
+                + the_planets_second_cosmic_velocity**2
+            )
+        )
+
+    return results
+
+
+def ideal_gas_formula() -> list:
+    results: list = []
+
+    if check(gas_pressure, gas_volume, absolute_temperature_in_kelvin):
+        results.append((gas_pressure * gas_volume) / absolute_temperature_in_kelvin)
+
+    return results
 
 
 module_help = """
 Модуль physics_lib содержит следующие функции:
     физические формулы:
-    1.  расчет массы:
-    2.  расчет веса:
-    3.  расчет скорости:
-    4.  расчет второй (освобожденной) космической скорости тела:
-    5.  расчет закона Бойля - Мариотта:
-    6.  расчет закона Гей-Люссака:
-    7.  расчет второго закона Гей-Люссака:
-    8.  расчет кинетической энергии тела:
-    9.  расчет концентрации растворов:
-    10.  расчет момента силы:
-    11. расчет третьего закона Ньютона:
-    12. расчет молярной массы газа:
-    13. расчет нормального ускорения при движении по окружности:
-    14. расчет ускорения:
-    15. расчет первой (орбитальной) космической скорости тела:
-    16. расчет центробежной силы:
-    17. расчет потенциальной энергии:
-    18. расчет тангенциального ускорения:
-    19. расчет радиоактивного распада массы вещества через прошедшее время:
-    20. расчет механической мощности:
-    21. расчет постоянного тока:
-    22. расчет переменного тока:
-    23. расчет силы:
-    24. расчет силы тока:
-    25. расчет скорости звука:
-    26. расчет третьей космической скорости тела:
-    27. расчет идеального газа:
+    расчет массы:
+    1. def mass_formula(
+    force=None,
+    acceleration=None,
+    m_1=None,
+    m_2=None,
+    distance=None,
+    density=None,
+    volume=None,
+    amount_of_substance_in_moles=None,
+    molar_mass=None,
+    mass_of_one_molecule=None,
+    number_of_particles=None,
+    weight_force=None,
+    total_energy_of_a_free_body=None,
+    speed_of_light=None,
+    impulse=None,
+    force_gr=None,
+    gravitational_constant=6.6743015 * pow(10, -11),
+    acceleration_of_gravity=9.81,
+    )->list
+    расчет веса:
+    2. weight_formula(mass, acceleration_of_gravity=9.81)->list
+    расчет скорости:
+    3. speed_formula(distance, time)->list
+    расчет второй (освобожденной) космической скорости тела:
+    4. the_second_liberation_cosmic_velocity_of_the_body_formula(
+    radius_of_the_planet: float,
+    orbit_altitude: float,
+    orbital_speed: float,
+    the_mass_of_the_planet_in_terms_of_Earth_masses: float,
+    gravitational_constant: float,
+    )->list
+    расчет закона Бойля - Мариотта:
+    5. boyles_law_formula(gas_pressure: float, gas_volume: float)->list
+    расчет закона Гей-Люссака:
+    6. volumes_law_formula(gas_volume: float, temperature: float)->list
+    расчет второго закона Гей-Люссака:
+    7. gay_lussacs_second_law_formula(gas_pressure, temperature: float)->list
+    расчет кинетической энергии тела:
+    8. kinetic_energy_of_the_body_formula(mass: float, speed: float)->list
+    расчет концентрации растворов:
+    9. mixture_concentration_formula(
+    component_mass: float, total_mass_of_all_components_of_the_mixture: float
+    )->list
+    расчет момента силы:
+    10. moment_of_force_formula(force_module: float, shoulder_strength: float)->list
+    расчет третьего закона Ньютона:
+    11. newtons_third_law_formula(force_1: float)->list
+    расчет молярной массы газа:
+    12. molar_mass_of_gas_formula(
+    mass_of_gas: float,
+    amount_of_substance_in_moles: float,
+    gas_density: float,
+    density: float,
+    universal_gas_constant: float,
+    temperature_in_kelvin: float,
+    pressure: float,
+    molar_volume: float = 22.4,
+    )->list
+    расчет нормального ускорения при движении по окружности:
+    13. normal_acceleration_when_moving_in_a_circle_formula(
+    radius: float,
+    speed: float,
+    angular_velocity: float,
+    )->list
+    расчет ускорения:
+    14. acceleration_formula(
+    initial_speed: float,
+    final_speed: float,
+    time: float,
+    force: float,
+    mass: float,
+    )->list
+    return (final_speed - initial_speed) / time
+    расчет первой (орбитальной) космической скорости тела:
+    15. the_first_orbital_cosmic_velocity_of_a_body_formula(
+    radius_of_the_planet: float,
+    orbit_altitude: float,
+    orbital_speed: float,
+    the_mass_of_the_planet_in_terms_of_Earth_masses: float,
+    gravitational_constant: float,
+    )->list
+    расчет центробежной силы:
+    16. centrifugal_force_formula(
+    mass: float,
+    speed: float,
+    radius: float,
+    angular_velocity: float,
+    )->list
+    расчет потенциальной энергии:
+    17. potential_energy_formula(
+    mass: float,
+    acceleration_of_gravity: float,
+    height: float,
+    body_stiffness_coefficient: float,
+    absolute_deformation: float,
+    )->list
+    расчет тангенциального ускорения:
+    18. tangential_acceleration_formula(
+    final_speed: float,
+    initial_speed: float,
+    delta_time: float,
+    )->list
+    расчет радиоактивного распада массы вещества через прошедшее время:
+    19. mass_of_matter_over_time_formula(
+    initial_number_of_cores: float,
+    half_life: float,
+    )->list
+    расчет механической мощности:
+    20. mechanic_power_formula(
+    work: float,
+    time: float,
+    force: float,
+    speed: float,
+    torque: float,
+    angular_velocity: float,
+    )->list
+    расчет постоянного тока:
+    21. direct_current_formula(voltage: float, amperage: float, resist: float)->list
+    расчет переменного тока:
+    22. alternating_current_formula(
+    voltage: float,
+    amperage: float,
+    active_power: float,
+    reactive_power: float,
+    )->list
+    расчет силы:
+    23. force_formula(mass: float, acceleration: float)->list
+    расчет силы тока:
+    24. amperage_formula(
+    charge: float,
+    time: float,
+    voltage: float,
+    resist: float,
+    electrical_power: float,
+    )->list
+    расчет скорости звука:
+    25. speed_of_sound_formula(
+    adiabatic_compressibility_of_the_medium: float,
+    medium_density: float,
+    adiabatic_index: float,
+    universal_gas_constant: float,
+    absolute_temperature_in_Kelvin: float,
+    molar_mass_of_gas: float,
+    wavelength: float,
+    oscillation_frequency: float,
+    air_temperature_in_Celsius: float,
+    )->list
+    расчет третьей космической скорости тела:
+    26. the_third_cosmic_velocity_of_a_body_formula(
+    orbital_speed_of_the_planet: float,
+    the_planets_second_cosmic_velocity: float,
+    )->list
+    расчет идеального газа:
+    27. ideal_gas_formula(
+    gas_pressure: float,
+    gas_volume: float,
+    absolute_temperature_in_kelvin: float,
+    )->list
 """
 
 if __name__ == "__main__":
