@@ -99,8 +99,8 @@ Energy_description = """
 """
 
 
-# пример создание объекта наследуемого от класса unit_base: object_mass = _Mass(value, "kilogram")
-class unit_base:
+# пример создание объекта наследуемого от класса UnitBase: object_mass = _Mass(value, "kilogram")
+class UnitBase:
     # Создание объекта (экземлпяра класса), инициализация принимает аргументы: Количество что является произвольной величиной
     # не зависящей от единицы измерения и название единицы измерения для ее определения
     def __init__(self, value: float, dimension: str):
@@ -135,7 +135,7 @@ class unit_base:
         return f"Value {self.value}, Dimension {self.dimension}"
 
 
-class Time(unit_base):
+class Time(UnitBase):
     nanosecond: bool = False
     microsecond: bool = False
     millisecond: bool = False
@@ -163,7 +163,7 @@ class Time(unit_base):
     }
 
 
-class Distance(unit_base):
+class Distance(UnitBase):
     nanometer: bool = False
     micrometer: bool = False
     millimeter: bool = False
@@ -195,7 +195,7 @@ class Distance(unit_base):
     }
 
 
-class Mass(unit_base):
+class Mass(UnitBase):
     microgram: bool = False
     milligram: bool = False
     gram: bool = False
@@ -219,7 +219,7 @@ class Mass(unit_base):
     }
 
 
-class Pressure(unit_base):
+class Pressure(UnitBase):
     atmosphere: bool = False
     bar: bool = False
     pascal: bool = False
@@ -235,7 +235,7 @@ class Pressure(unit_base):
     }
 
 
-class Volume(unit_base):
+class Volume(UnitBase):
     liter: bool = False
     cubic_meter: bool = False
     milliliter: bool = False
@@ -279,7 +279,7 @@ class Volume(unit_base):
     }
 
 
-class PlaneAngle(unit_base):
+class PlaneAngle(UnitBase):
     degree: bool = False
     gradian: bool = False
     minute_of_arc: bool = False
@@ -297,7 +297,7 @@ class PlaneAngle(unit_base):
     }
 
 
-class Area(unit_base):
+class Area(UnitBase):
     square_meter: bool = False
     square_kilometer: bool = False
     square_mile: bool = False
@@ -320,7 +320,7 @@ class Area(unit_base):
 
 
 # Этот класс писала нейронка
-class FuelConsumption(unit_base):
+class FuelConsumption(UnitBase):
     liter_per_100_km: bool = False
     kilometer_per_liter: bool = False
     us_mpg: bool = False
@@ -367,7 +367,7 @@ class FuelConsumption(unit_base):
 
 
 # Этот класс писала нейронка
-class Speed(unit_base):
+class Speed(UnitBase):
     meter_per_second: bool = False
     kilometer_per_hour: bool = False
     mile_per_hour: bool = False
@@ -383,7 +383,7 @@ class Speed(unit_base):
     }
 
 
-class Frequency(unit_base):
+class Frequency(UnitBase):
     hertz: bool = False
     kilohertz: bool = False
     megahertz: bool = False
@@ -397,7 +397,7 @@ class Frequency(unit_base):
     }
 
 
-class Energy(unit_base):
+class Energy(UnitBase):
     joule: bool = False
     kilojoule: bool = False
     gram_calorie: bool = False
@@ -424,7 +424,7 @@ class Energy(unit_base):
 
 
 # Этот класс писала нейронка
-class Temperature(unit_base):
+class Temperature(UnitBase):
     celsius: bool = False
     fahrenheit: bool = False
     kelvin: bool = False
