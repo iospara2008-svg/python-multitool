@@ -1,3 +1,168 @@
+"""
+Модуль physics_lib содержит следующие функции:
+    физические формулы:
+    расчет массы:
+    1. def mass_formula(
+    force=None,
+    acceleration=None,
+    m_1=None,
+    m_2=None,
+    distance=None,
+    density=None,
+    volume=None,
+    amount_of_substance_in_moles=None,
+    molar_mass=None,
+    mass_of_one_molecule=None,
+    number_of_particles=None,
+    weight_force=None,
+    total_energy_of_a_free_body=None,
+    speed_of_light=None,
+    impulse=None,
+    force_gr=None,
+    gravitational_constant=6.6743015 * pow(10, -11),
+    acceleration_of_gravity=9.81,
+    )->list
+    расчет веса:
+    2. weight_formula(mass, acceleration_of_gravity=9.81)->list
+    расчет скорости:
+    3. speed_formula(distance, time)->list
+    расчет второй (освобожденной) космической скорости тела:
+    4. the_second_liberation_cosmic_velocity_of_the_body_formula(
+    radius_of_the_planet: float,
+    orbit_altitude: float,
+    orbital_speed: float,
+    the_mass_of_the_planet_in_terms_of_Earth_masses: float,
+    gravitational_constant: float,
+    )->list
+    расчет закона Бойля - Мариотта:
+    5. boyles_law_formula(gas_pressure: float, gas_volume: float)->list
+    расчет закона Гей-Люссака:
+    6. volumes_law_formula(gas_volume: float, temperature: float)->list
+    расчет второго закона Гей-Люссака:
+    7. gay_lussacs_second_law_formula(gas_pressure, temperature: float)->list
+    расчет кинетической энергии тела:
+    8. kinetic_energy_of_the_body_formula(mass: float, speed: float)->list
+    расчет концентрации растворов:
+    9. mixture_concentration_formula(
+    component_mass: float, total_mass_of_all_components_of_the_mixture: float
+    )->list
+    расчет момента силы:
+    10. moment_of_force_formula(force_module: float, shoulder_strength: float)->list
+    расчет третьего закона Ньютона:
+    11. newtons_third_law_formula(force_1: float)->list
+    расчет молярной массы газа:
+    12. molar_mass_of_gas_formula(
+    mass_of_gas: float,
+    amount_of_substance_in_moles: float,
+    gas_density: float,
+    density: float,
+    universal_gas_constant: float,
+    temperature_in_kelvin: float,
+    pressure: float,
+    molar_volume: float = 22.4,
+    )->list
+    расчет нормального ускорения при движении по окружности:
+    13. normal_acceleration_when_moving_in_a_circle_formula(
+    radius: float,
+    speed: float,
+    angular_velocity: float,
+    )->list
+    расчет ускорения:
+    14. acceleration_formula(
+    initial_speed: float,
+    final_speed: float,
+    time: float,
+    force: float,
+    mass: float,
+    )->list
+    return (final_speed - initial_speed) / time
+    расчет первой (орбитальной) космической скорости тела:
+    15. the_first_orbital_cosmic_velocity_of_a_body_formula(
+    radius_of_the_planet: float,
+    orbit_altitude: float,
+    orbital_speed: float,
+    the_mass_of_the_planet_in_terms_of_Earth_masses: float,
+    gravitational_constant: float,
+    )->list
+    расчет центробежной силы:
+    16. centrifugal_force_formula(
+    mass: float,
+    speed: float,
+    radius: float,
+    angular_velocity: float,
+    )->list
+    расчет потенциальной энергии:
+    17. potential_energy_formula(
+    mass: float,
+    acceleration_of_gravity: float,
+    height: float,
+    body_stiffness_coefficient: float,
+    absolute_deformation: float,
+    )->list
+    расчет тангенциального ускорения:
+    18. tangential_acceleration_formula(
+    final_speed: float,
+    initial_speed: float,
+    delta_time: float,
+    )->list
+    расчет радиоактивного распада массы вещества через прошедшее время:
+    19. mass_of_matter_over_time_formula(
+    initial_number_of_cores: float,
+    half_life: float,
+    )->list
+    расчет механической мощности:
+    20. mechanic_power_formula(
+    work: float,
+    time: float,
+    force: float,
+    speed: float,
+    torque: float,
+    angular_velocity: float,
+    )->list
+    расчет постоянного тока:
+    21. direct_current_formula(voltage: float, amperage: float, resist: float)->list
+    расчет переменного тока:
+    22. alternating_current_formula(
+    voltage: float,
+    amperage: float,
+    active_power: float,
+    reactive_power: float,
+    )->list
+    расчет силы:
+    23. force_formula(mass: float, acceleration: float)->list
+    расчет силы тока:
+    24. amperage_formula(
+    charge: float,
+    time: float,
+    voltage: float,
+    resist: float,
+    electrical_power: float,
+    )->list
+    расчет скорости звука:
+    25. speed_of_sound_formula(
+    adiabatic_compressibility_of_the_medium: float,
+    medium_density: float,
+    adiabatic_index: float,
+    universal_gas_constant: float,
+    absolute_temperature_in_Kelvin: float,
+    molar_mass_of_gas: float,
+    wavelength: float,
+    oscillation_frequency: float,
+    air_temperature_in_Celsius: float,
+    )->list
+    расчет третьей космической скорости тела:
+    26. the_third_cosmic_velocity_of_a_body_formula(
+    orbital_speed_of_the_planet: float,
+    the_planets_second_cosmic_velocity: float,
+    )->list
+    расчет идеального газа:
+    27. ideal_gas_formula(
+    gas_pressure: float,
+    gas_volume: float,
+    absolute_temperature_in_kelvin: float,
+    )->list
+"""
+
 import math
 
 # Физические константы
@@ -909,173 +1074,8 @@ def ideal_gas_formula() -> list:
     return results
 
 
-module_help = """
-Модуль physics_lib содержит следующие функции:
-    физические формулы:
-    расчет массы:
-    1. def mass_formula(
-    force=None,
-    acceleration=None,
-    m_1=None,
-    m_2=None,
-    distance=None,
-    density=None,
-    volume=None,
-    amount_of_substance_in_moles=None,
-    molar_mass=None,
-    mass_of_one_molecule=None,
-    number_of_particles=None,
-    weight_force=None,
-    total_energy_of_a_free_body=None,
-    speed_of_light=None,
-    impulse=None,
-    force_gr=None,
-    gravitational_constant=6.6743015 * pow(10, -11),
-    acceleration_of_gravity=9.81,
-    )->list
-    расчет веса:
-    2. weight_formula(mass, acceleration_of_gravity=9.81)->list
-    расчет скорости:
-    3. speed_formula(distance, time)->list
-    расчет второй (освобожденной) космической скорости тела:
-    4. the_second_liberation_cosmic_velocity_of_the_body_formula(
-    radius_of_the_planet: float,
-    orbit_altitude: float,
-    orbital_speed: float,
-    the_mass_of_the_planet_in_terms_of_Earth_masses: float,
-    gravitational_constant: float,
-    )->list
-    расчет закона Бойля - Мариотта:
-    5. boyles_law_formula(gas_pressure: float, gas_volume: float)->list
-    расчет закона Гей-Люссака:
-    6. volumes_law_formula(gas_volume: float, temperature: float)->list
-    расчет второго закона Гей-Люссака:
-    7. gay_lussacs_second_law_formula(gas_pressure, temperature: float)->list
-    расчет кинетической энергии тела:
-    8. kinetic_energy_of_the_body_formula(mass: float, speed: float)->list
-    расчет концентрации растворов:
-    9. mixture_concentration_formula(
-    component_mass: float, total_mass_of_all_components_of_the_mixture: float
-    )->list
-    расчет момента силы:
-    10. moment_of_force_formula(force_module: float, shoulder_strength: float)->list
-    расчет третьего закона Ньютона:
-    11. newtons_third_law_formula(force_1: float)->list
-    расчет молярной массы газа:
-    12. molar_mass_of_gas_formula(
-    mass_of_gas: float,
-    amount_of_substance_in_moles: float,
-    gas_density: float,
-    density: float,
-    universal_gas_constant: float,
-    temperature_in_kelvin: float,
-    pressure: float,
-    molar_volume: float = 22.4,
-    )->list
-    расчет нормального ускорения при движении по окружности:
-    13. normal_acceleration_when_moving_in_a_circle_formula(
-    radius: float,
-    speed: float,
-    angular_velocity: float,
-    )->list
-    расчет ускорения:
-    14. acceleration_formula(
-    initial_speed: float,
-    final_speed: float,
-    time: float,
-    force: float,
-    mass: float,
-    )->list
-    return (final_speed - initial_speed) / time
-    расчет первой (орбитальной) космической скорости тела:
-    15. the_first_orbital_cosmic_velocity_of_a_body_formula(
-    radius_of_the_planet: float,
-    orbit_altitude: float,
-    orbital_speed: float,
-    the_mass_of_the_planet_in_terms_of_Earth_masses: float,
-    gravitational_constant: float,
-    )->list
-    расчет центробежной силы:
-    16. centrifugal_force_formula(
-    mass: float,
-    speed: float,
-    radius: float,
-    angular_velocity: float,
-    )->list
-    расчет потенциальной энергии:
-    17. potential_energy_formula(
-    mass: float,
-    acceleration_of_gravity: float,
-    height: float,
-    body_stiffness_coefficient: float,
-    absolute_deformation: float,
-    )->list
-    расчет тангенциального ускорения:
-    18. tangential_acceleration_formula(
-    final_speed: float,
-    initial_speed: float,
-    delta_time: float,
-    )->list
-    расчет радиоактивного распада массы вещества через прошедшее время:
-    19. mass_of_matter_over_time_formula(
-    initial_number_of_cores: float,
-    half_life: float,
-    )->list
-    расчет механической мощности:
-    20. mechanic_power_formula(
-    work: float,
-    time: float,
-    force: float,
-    speed: float,
-    torque: float,
-    angular_velocity: float,
-    )->list
-    расчет постоянного тока:
-    21. direct_current_formula(voltage: float, amperage: float, resist: float)->list
-    расчет переменного тока:
-    22. alternating_current_formula(
-    voltage: float,
-    amperage: float,
-    active_power: float,
-    reactive_power: float,
-    )->list
-    расчет силы:
-    23. force_formula(mass: float, acceleration: float)->list
-    расчет силы тока:
-    24. amperage_formula(
-    charge: float,
-    time: float,
-    voltage: float,
-    resist: float,
-    electrical_power: float,
-    )->list
-    расчет скорости звука:
-    25. speed_of_sound_formula(
-    adiabatic_compressibility_of_the_medium: float,
-    medium_density: float,
-    adiabatic_index: float,
-    universal_gas_constant: float,
-    absolute_temperature_in_Kelvin: float,
-    molar_mass_of_gas: float,
-    wavelength: float,
-    oscillation_frequency: float,
-    air_temperature_in_Celsius: float,
-    )->list
-    расчет третьей космической скорости тела:
-    26. the_third_cosmic_velocity_of_a_body_formula(
-    orbital_speed_of_the_planet: float,
-    the_planets_second_cosmic_velocity: float,
-    )->list
-    расчет идеального газа:
-    27. ideal_gas_formula(
-    gas_pressure: float,
-    gas_volume: float,
-    absolute_temperature_in_kelvin: float,
-    )->list
-"""
-
 if __name__ == "__main__":
     print("Module physics_lib is running")
-    print(module_help)
+    print(__doc__)
 else:
     print(f"module is included: {__name__}")
