@@ -264,8 +264,8 @@ Energy_description = """
 """
 
 
-# пример создание объекта наследуемого от класса unit_base: object_mass = _Mass(value, "kilogram")
-class unit_base:
+# пример создание объекта наследуемого от класса UnitBase: object_mass = _Mass(value, "kilogram")
+class UnitBase:
     # Создание объекта (экземлпяра класса), инициализация принимает аргументы: Количество что является произвольной величиной
     # не зависящей от единицы измерения и название единицы измерения для ее определения
     def __init__(self, value: float, dimension: str):
@@ -300,7 +300,7 @@ class unit_base:
         return f"Value {self.value}, Dimension {self.dimension}"
 
 
-class Time(unit_base):
+class Time(UnitBase):
     nanosecond: bool = False
     microsecond: bool = False
     millisecond: bool = False
@@ -328,7 +328,7 @@ class Time(unit_base):
     }
 
 
-class Distance(unit_base):
+class Distance(UnitBase):
     nanometer: bool = False
     micrometer: bool = False
     millimeter: bool = False
@@ -360,7 +360,7 @@ class Distance(unit_base):
     }
 
 
-class Mass(unit_base):
+class Mass(UnitBase):
     microgram: bool = False
     milligram: bool = False
     gram: bool = False
@@ -384,7 +384,7 @@ class Mass(unit_base):
     }
 
 
-class Pressure(unit_base):
+class Pressure(UnitBase):
     atmosphere: bool = False
     bar: bool = False
     pascal: bool = False
@@ -400,7 +400,7 @@ class Pressure(unit_base):
     }
 
 
-class Volume(unit_base):
+class Volume(UnitBase):
     liter: bool = False
     cubic_meter: bool = False
     milliliter: bool = False
@@ -444,7 +444,7 @@ class Volume(unit_base):
     }
 
 
-class PlaneAngle(unit_base):
+class PlaneAngle(UnitBase):
     degree: bool = False
     gradian: bool = False
     minute_of_arc: bool = False
@@ -462,7 +462,7 @@ class PlaneAngle(unit_base):
     }
 
 
-class Area(unit_base):
+class Area(UnitBase):
     square_meter: bool = False
     square_kilometer: bool = False
     square_mile: bool = False
@@ -485,7 +485,7 @@ class Area(unit_base):
 
 
 # Этот класс писала нейронка
-class FuelConsumption(unit_base):
+class FuelConsumption(UnitBase):
     liter_per_100_km: bool = False
     kilometer_per_liter: bool = False
     us_mpg: bool = False
@@ -532,7 +532,7 @@ class FuelConsumption(unit_base):
 
 
 # Этот класс писала нейронка
-class Speed(unit_base):
+class Speed(UnitBase):
     meter_per_second: bool = False
     kilometer_per_hour: bool = False
     mile_per_hour: bool = False
@@ -548,7 +548,7 @@ class Speed(unit_base):
     }
 
 
-class Frequency(unit_base):
+class Frequency(UnitBase):
     hertz: bool = False
     kilohertz: bool = False
     megahertz: bool = False
@@ -562,7 +562,7 @@ class Frequency(unit_base):
     }
 
 
-class Energy(unit_base):
+class Energy(UnitBase):
     joule: bool = False
     kilojoule: bool = False
     gram_calorie: bool = False
@@ -589,7 +589,7 @@ class Energy(unit_base):
 
 
 # Этот класс писала нейронка
-class Temperature(unit_base):
+class Temperature(UnitBase):
     celsius: bool = False
     fahrenheit: bool = False
     kelvin: bool = False
@@ -630,77 +630,8 @@ class Temperature(unit_base):
         self.value = new_value
         self.dimension = to_dimension
 
-    # Нужно написать отдельный конвертер для температуры
 
-
-force: float = (None,)
-acceleration: float = (None,)
-m_1: float = (None,)
-m_2: float = (None,)
-distance: float = (None,)
-density: float = (None,)
-volume: float = (None,)
-amount_of_substance_in_moles: float = (None,)
-molar_mass: float = (None,)
-mass_of_one_molecule: float = (None,)
-number_of_particles: float = (None,)
-weight_force: float = (None,)
-total_energy_of_a_free_body: float = (None,)
-speed_of_light: float = (None,)
-impulse: float = (None,)
-force_gr: float = (None,)
-mass: float = (None,)
-time: float = (None,)
-radius_of_the_planet: float = (None,)
-orbit_altitude: float = (None,)
-orbital_speed: float = (None,)
-the_mass_of_the_planet_in_terms_of_Earth_masses: float = (None,)
-gas_pressure: float = (None,)
-gas_volume: float = (None,)
-temperature: float = (None,)
-speed: float = (None,)
-component_mass: float = (None,)
-total_mass_of_all_components_of_the_mixture: float = (None,)
-force_module: float = (None,)
-shoulder_strength: float = (None,)
-force_1: float = (None,)
-mass_of_gas: float = (None,)
-gas_density: float = (None,)
-universal_gas_constant: float = (None,)
-temperature_in_kelvin: float = (None,)
-pressure: float = (None,)
-radius: float = (None,)
-angular_velocity: float = (None,)
-initial_speed: float = (None,)
-final_speed: float = (None,)
-height: float = (None,)
-body_stiffness_coefficient: float = (None,)
-absolute_deformation: float = (None,)
-delta_time: float = (None,)
-initial_number_of_cores: float = (None,)
-half_life: float = (None,)
-work: float = (None,)
-torque: float = (None,)
-voltage: float = (None,)
-amperage: float = (None,)
-resist: float = (None,)
-active_power: float = (None,)
-reactive_power: float = (None,)
-charge: float = (None,)
-electrical_power: float = (None,)
-adiabatic_compressibility_of_the_medium: float = (None,)
-medium_density: float = (None,)
-adiabatic_index: float = (None,)
-absolute_temperature_in_kelvin: float = (None,)
-molar_mass_of_gas: float = (None,)
-wavelength: float = (None,)
-oscillation_frequency: float = (None,)
-air_temperature_in_Celsius: float = (None,)
-orbital_speed_of_the_planet: float = (None,)
-the_planets_second_cosmic_velocity: float = (None,)
-gravitational_constant: float = (6.6743015 * pow(10, -11),)
-acceleration_of_gravity: float = (9.81,)
-molar_volume: float = (22.4,)
+# Нужно написать отдельный конвертер для температуры
 
 
 def check(*args):
@@ -713,7 +644,26 @@ def check(*args):
 # Mass Inertial and Gravitational
 # Масса - скалярная величина, определяющая инертные и гравитационные свойства тел.
 # Масса эквивалентна энергии покоя
-def mass_formula() -> list:  # Inertial mass
+def mass_formula(
+    force=None,
+    acceleration=None,
+    m_1=None,
+    m_2=None,
+    distance=None,
+    density=None,
+    volume=None,
+    amount_of_substance_in_moles=None,
+    molar_mass=None,
+    mass_of_one_molecule=None,
+    number_of_particles=None,
+    weight_force=None,
+    total_energy_of_a_free_body=None,
+    speed_of_light=None,
+    impulse=None,
+    force_gr=None,
+    gravitational_constant=6.6743015 * 10**-11,
+    acceleration_of_gravity=9.81,
+) -> list:  # Inertial mass
     results: list = []
 
     if check(force, acceleration):
@@ -747,7 +697,10 @@ def mass_formula() -> list:  # Inertial mass
     return results
 
 
-def weight_formula() -> list:
+def weight_formula(
+    mass: float = None,
+    acceleration_of_gravity: float = 9.81,
+) -> list:
     results: list = []
 
     # Основная фомула веса: масса умноженная на ускорение гравитации
@@ -758,7 +711,10 @@ def weight_formula() -> list:
     return results
 
 
-def speed_formula() -> list:
+def speed_formula(
+    distance: float = None,
+    time: float = None,
+) -> list:
     results: list = []
 
     # Основная фомула скорости: пройденное расстояние делить на время движения
@@ -769,7 +725,13 @@ def speed_formula() -> list:
     return results
 
 
-def the_second_liberation_cosmic_velocity_of_the_body_formula() -> list:
+def the_second_liberation_cosmic_velocity_of_the_body_formula(
+    radius_of_the_planet: float = None,
+    orbit_altitude: float = None,
+    orbital_speed: float = None,
+    the_mass_of_the_planet_in_terms_of_Earth_masses: float = None,
+    gravitational_constant: float = 6.6743015 * pow(10, -11),
+) -> list:
     results: list = []
 
     if check(
@@ -796,7 +758,10 @@ def the_second_liberation_cosmic_velocity_of_the_body_formula() -> list:
     return results
 
 
-def boyles_law_formula() -> list:
+def boyles_law_formula(
+    gas_pressure: float = None,
+    gas_volume: float = None,
+) -> list:
     results: list = []
 
     if check(gas_pressure, gas_volume):
@@ -807,7 +772,10 @@ def boyles_law_formula() -> list:
     return results
 
 
-def volumes_law_formula() -> list:
+def volumes_law_formula(
+    gas_volume: float = None,
+    temperature: float = None,
+) -> list:
     results: list = []
 
     if check(gas_volume, temperature):
@@ -816,7 +784,10 @@ def volumes_law_formula() -> list:
     return results
 
 
-def gay_lussacs_second_law_formula() -> list:
+def gay_lussacs_second_law_formula(
+    gas_pressure: float = None,
+    temperature: float = None,
+) -> list:
     results: list = []
 
     if check(gas_pressure, temperature):
@@ -825,7 +796,10 @@ def gay_lussacs_second_law_formula() -> list:
     return results
 
 
-def kinetic_energy_of_the_body_formula() -> list:
+def kinetic_energy_of_the_body_formula(
+    mass: float = None,
+    speed: float = None,
+) -> list:
     results: list = []
 
     if check(mass, speed):
@@ -834,7 +808,10 @@ def kinetic_energy_of_the_body_formula() -> list:
     return results
 
 
-def mixture_concentration_formula() -> list:
+def mixture_concentration_formula(
+    component_mass: float = None,
+    total_mass_of_all_components_of_the_mixture: float = None,
+) -> list:
     results: list = []
 
     if check(component_mass, total_mass_of_all_components_of_the_mixture):
@@ -843,7 +820,10 @@ def mixture_concentration_formula() -> list:
     return results
 
 
-def moment_of_force_formula() -> list:
+def moment_of_force_formula(
+    force_module: float = None,
+    shoulder_strength: float = None,
+) -> list:
     results: list = []
 
     if check(force_module, shoulder_strength):
@@ -852,7 +832,9 @@ def moment_of_force_formula() -> list:
     return results
 
 
-def newtons_third_law_formula() -> list:
+def newtons_third_law_formula(
+    force_1: float = None,
+) -> list:
     results: list = []
 
     if check(force_1):
@@ -861,7 +843,16 @@ def newtons_third_law_formula() -> list:
     return results
 
 
-def molar_mass_of_gas_formula() -> list:
+def molar_mass_of_gas_formula(
+    mass_of_gas: float = None,
+    amount_of_substance_in_moles: float = None,
+    gas_density: float = None,
+    density: float = None,
+    universal_gas_constant: float = None,
+    temperature_in_kelvin: float = None,
+    pressure: float = None,
+    molar_volume: float = 22.4,
+) -> list:
     results: list = []
 
     if check(mass_of_gas, amount_of_substance_in_moles):
@@ -876,7 +867,11 @@ def molar_mass_of_gas_formula() -> list:
     return results
 
 
-def normal_acceleration_when_moving_in_a_circle_formula() -> list:
+def normal_acceleration_when_moving_in_a_circle_formula(
+    radius: float = None,
+    speed: float = None,
+    angular_velocity: float = None,
+) -> list:
     results: list = []
 
     if check(speed, radius):
@@ -887,7 +882,13 @@ def normal_acceleration_when_moving_in_a_circle_formula() -> list:
     return results
 
 
-def acceleration_formula() -> list:
+def acceleration_formula(
+    initial_speed: float = None,
+    final_speed: float = None,
+    time: float = None,
+    force: float = None,
+    mass: float = None,
+) -> list:
     results: list = []
 
     if check(final_speed, initial_speed, time):
@@ -898,7 +899,13 @@ def acceleration_formula() -> list:
     return results
 
 
-def the_first_orbital_cosmic_velocity_of_a_body_formula() -> list:
+def the_first_orbital_cosmic_velocity_of_a_body_formula(
+    radius_of_the_planet: float = None,
+    orbit_altitude: float = None,
+    orbital_speed: float = None,
+    the_mass_of_the_planet_in_terms_of_Earth_masses: float = None,
+    gravitational_constant: float = 6.6743015 * pow(10, -11),
+) -> list:
     results: list = []
 
     if check(
@@ -921,7 +928,12 @@ def the_first_orbital_cosmic_velocity_of_a_body_formula() -> list:
     return results
 
 
-def centrifugal_force_formula() -> list:
+def centrifugal_force_formula(
+    mass: float = None,
+    speed: float = None,
+    radius: float = None,
+    angular_velocity: float = None,
+) -> list:
     results: list = []
 
     if check(mass, speed, radius):
@@ -932,7 +944,13 @@ def centrifugal_force_formula() -> list:
     return results
 
 
-def potential_energy_formula() -> list:
+def potential_energy_formula(
+    mass: float = None,
+    acceleration_of_gravity: float = None,
+    height: float = None,
+    body_stiffness_coefficient: float = None,
+    absolute_deformation: float = None,
+) -> list:
     results: list = []
 
     if check(mass, acceleration_of_gravity, height):
@@ -943,7 +961,11 @@ def potential_energy_formula() -> list:
     return results
 
 
-def tangential_acceleration_formula() -> list:
+def tangential_acceleration_formula(
+    final_speed: float = None,
+    initial_speed: float = None,
+    delta_time: float = None,
+) -> list:
     results: list = []
 
     if check(final_speed, initial_speed, delta_time):
@@ -952,7 +974,10 @@ def tangential_acceleration_formula() -> list:
     return results
 
 
-def mass_of_matter_over_time_formula() -> list:
+def mass_of_matter_over_time_formula(
+    initial_number_of_cores: float = None,
+    half_life: float = None,
+) -> list:
     results: list = []
 
     if check(initial_number_of_cores, half_life):
@@ -961,7 +986,14 @@ def mass_of_matter_over_time_formula() -> list:
     return results
 
 
-def mechanic_power_formula() -> list:
+def mechanic_power_formula(
+    work: float = None,
+    time: float = None,
+    force: float = None,
+    speed: float = None,
+    torque: float = None,
+    angular_velocity: float = None,
+) -> list:
     results: list = []
 
     if check(work, time):
@@ -974,7 +1006,11 @@ def mechanic_power_formula() -> list:
     return results
 
 
-def direct_current_formula() -> list:
+def direct_current_formula(
+    voltage: float = None,
+    amperage: float = None,
+    resist: float = None,
+) -> list:
     results: list = []
 
     if check(voltage, amperage):
@@ -987,7 +1023,12 @@ def direct_current_formula() -> list:
     return results
 
 
-def alternating_current_formula() -> list:
+def alternating_current_formula(
+    voltage: float = None,
+    amperage: float = None,
+    active_power: float = None,
+    reactive_power: float = None,
+) -> list:
     results: list = []
 
     if check(voltage, amperage):
@@ -998,7 +1039,10 @@ def alternating_current_formula() -> list:
     return results
 
 
-def force_formula() -> list:
+def force_formula(
+    mass: float = None,
+    acceleration: float = None,
+) -> list:
     results: list = []
 
     if check(mass, acceleration):
@@ -1007,7 +1051,13 @@ def force_formula() -> list:
     return results
 
 
-def amperage_formula() -> list:
+def amperage_formula(
+    charge: float = None,
+    time: float = None,
+    voltage: float = None,
+    resist: float = None,
+    electrical_power: float = None,
+) -> list:
     results: list = []
 
     if check(charge, time):
@@ -1020,12 +1070,22 @@ def amperage_formula() -> list:
     return results
 
 
-def speed_of_sound_formula() -> list:
+def speed_of_sound_formula(
+    adiabatic_compressibility_of_the_medium: float = None,
+    medium_density: float = None,
+    adiabatic_index: float = None,
+    universal_gas_constant: float = None,
+    absolute_temperature_in_kelvin: float = None,
+    molar_mass_of_gas: float = None,
+    wavelength: float = None,
+    oscillation_frequency: float = None,
+    air_temperature_in_Celsius: float = None,
+) -> list:
     results: list = []
 
     if check(adiabatic_compressibility_of_the_medium, medium_density):
         results.append(
-            math.sqrt(1 / adiabatic_compressibility_of_the_medium * medium_density)
+            math.sqrt(1 / (adiabatic_compressibility_of_the_medium * medium_density))
         )
     if check(
         adiabatic_index,
@@ -1051,7 +1111,10 @@ def speed_of_sound_formula() -> list:
     return results
 
 
-def the_third_cosmic_velocity_of_a_body_formula() -> list:
+def the_third_cosmic_velocity_of_a_body_formula(
+    orbital_speed_of_the_planet: float = None,
+    the_planets_second_cosmic_velocity: float = None,
+) -> list:
     results: list = []
 
     if check(orbital_speed_of_the_planet, the_planets_second_cosmic_velocity):
@@ -1065,7 +1128,11 @@ def the_third_cosmic_velocity_of_a_body_formula() -> list:
     return results
 
 
-def ideal_gas_formula() -> list:
+def ideal_gas_formula(
+    gas_pressure: float = None,
+    gas_volume: float = None,
+    absolute_temperature_in_kelvin: float = None,
+) -> list:
     results: list = []
 
     if check(gas_pressure, gas_volume, absolute_temperature_in_kelvin):
