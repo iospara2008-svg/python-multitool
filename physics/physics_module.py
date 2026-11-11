@@ -737,7 +737,7 @@ def speed_of_sound_formula() -> list:
 
     if check(adiabatic_compressibility_of_the_medium, medium_density):
         results.append(
-            math.sqrt(1 / adiabatic_compressibility_of_the_medium * medium_density)
+            math.sqrt(1 / (adiabatic_compressibility_of_the_medium * medium_density))
         )
     if check(
         adiabatic_index,
