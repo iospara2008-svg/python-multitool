@@ -164,6 +164,7 @@
 """
 
 import math
+import json
 
 # Физические константы
 # Основные физические константы
@@ -263,6 +264,11 @@ Energy_description = """
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 """
 
+with open("src/physics_data.json", "r") as _physics_data:
+    physics_data = json.load(_physics_data)
+
+print(physics_data)
+
 
 # пример создание объекта наследуемого от класса unit_base: object_mass = _Mass(value, "kilogram")
 class unit_base:
@@ -271,13 +277,9 @@ class unit_base:
     def __init__(self, value: float, dimension: str):
         dimension = dimension.lower()
 
-        if hasattr(self, dimension):  # если класс имеет арибут совпадающий с
-            setattr(self, dimension, True)  # названием переданного аргумента
-            # то атрибуту присваивается значение True.
-
-            # преобразование value в соответствии с переданным аргументом _dimension.
-            self.value = value
-            self.dimension = dimension
+        # преобразование value в соответствии с переданным аргументом _dimension.
+        self.value = value
+        self.dimension = dimension
 
     # Функция для преобразования единиц измерения принимает аргумент
     # единица измерения to_dimension в которую нужно преобразовать величину (переменную value).
@@ -301,200 +303,36 @@ class unit_base:
 
 
 class Time(unit_base):
-    nanosecond: bool = False
-    microsecond: bool = False
-    millisecond: bool = False
-    second: bool = False
-    minute: bool = False
-    hour: bool = False
-    day: bool = False
-    week: bool = False
-    year: bool = False
-    century: bool = False
-    exasecond: bool = False
-
-    dimensions = {
-        "nanosecond": 1e-9,
-        "microsecond": 1e-6,
-        "millisecond": 1e-3,
-        "second": 1,
-        "minute": 60,
-        "hour": 60 * 60,
-        "day": 60 * 60 * 24,
-        "week": 60 * 60 * 24 * 7,
-        "year": 60 * 60 * 24 * 365,
-        "century": 60 * 60 * 24 * 365 * 100,
-        "exasecond": 1e18,
-    }
+    dimensions = physics_data["time_dimensions"]
 
 
 class Distance(unit_base):
-    nanometer: bool = False
-    micrometer: bool = False
-    millimeter: bool = False
-    centimeter: bool = False
-    decimeter: bool = False
-    meter: bool = False
-    kilometer: bool = False
-    inch: bool = False
-    foot: bool = False
-    yard: bool = False
-    mile: bool = False
-    nautical_mile: bool = False
-    planck_length: bool = False
-
-    dimensions = {
-        "nanometer": 1e-9,
-        "micrometer": 1e-6,
-        "millimeter": 1e-3,
-        "centimeter": 1e-2,
-        "decimeter": 1e-1,
-        "meter": 1,
-        "kilometer": 1e3,
-        "inch": 0.0254,
-        "foot": 0.3048,
-        "yard": 0.9144,
-        "mile": 1609.344,
-        "nautical_mile": 1852,
-        "planck_length": 1.616e-35,
-    }
+    dimensions = physics_data["distance_dimensions"]
 
 
 class Mass(unit_base):
-    microgram: bool = False
-    milligram: bool = False
-    gram: bool = False
-    kilogram: bool = False
-    centner: bool = False
-    ton: bool = False
-    pound: bool = False
-    ounce: bool = False
-    carat: bool = False
-
-    dimensions = {
-        "microgram": 1e-6,
-        "milligram": 1e-3,
-        "gram": 1.0,
-        "kilogram": 1e3,
-        "centner": 1e5,
-        "ton": 1e6,
-        "pound": 453.59237,
-        "ounce": 28.3495231,
-        "carat": 0.2,
-    }
+    dimensions = physics_data["mass_dimensions"]
 
 
 class Pressure(unit_base):
-    atmosphere: bool = False
-    bar: bool = False
-    pascal: bool = False
-    torr: bool = False
-    pound_force_per_square_inch: bool = False
-
-    dimensions = {
-        "pascal": 1,
-        "bar": 100000.0,
-        "atmosphere": 101325.0,
-        "torr": 133.322,
-        "pound_force_per_square_inch": 6894.76,
-    }
+    dimensions = physics_data["pressure_dimensions"]
 
 
 class Volume(unit_base):
-    liter: bool = False
-    cubic_meter: bool = False
-    milliliter: bool = False
-    us_gallon: bool = False
-    us_liquid_quart: bool = False
-    us_liquid_pint: bool = False
-    us_cup: bool = False
-    us_fluid_ounce: bool = False
-    us_tablespoon: bool = False
-    us_teaspoon: bool = False
-    imperial_gallon: bool = False
-    imperial_quart: bool = False
-    imperial_pint: bool = False
-    imperial_cup: bool = False
-    imperial_fluid_ounce: bool = False
-    british_tablespoon: bool = False
-    british_teaspoon: bool = False
-    cubic_foot: bool = False
-    cubic_inch: bool = False
-
-    dimensions = {
-        "liter": 1.0,
-        "cubic_meter": 1000.0,
-        "milliliter": 0.001,
-        "us_gallon": 3.78541,
-        "us_liquid_quart": 0.946353,
-        "us_liquid_pint": 0.473176,
-        "us_cup": 0.24,
-        "us_fluid_ounce": 0.0295735,
-        "us_tablespoon": 0.0147868,
-        "us_teaspoon": 0.00492892,
-        "imperial_gallon": 4.54609,
-        "imperial_quart": 1.13652,
-        "imperial_pint": 0.568261,
-        "imperial_cup": 0.284131,
-        "imperial_fluid_ounce": 0.0284131,
-        "british_tablespoon": 0.0177582,
-        "british_teaspoon": 0.00591939,
-        "cubic_foot": 28.3168,
-        "cubic_inch": 0.0163871,
-    }
+    dimensions = physics_data["volume_dimensions"]
 
 
 class PlaneAngle(unit_base):
-    degree: bool = False
-    gradian: bool = False
-    minute_of_arc: bool = False
-    radian: bool = False
-    mil: bool = False
-    second_of_arc: bool = False
-
-    dimensions = {
-        "radian": 1.0,
-        "degree": 0.017453292519943295,  # pi / 180
-        "gradian": 0.015707963267948967,  # pi / 200
-        "minute_of_arc": 0.0002908882086657216,  # pi / 10800
-        "second_of_arc": 0.00000484813681109536,  # pi / 648000
-        "mil": 0.0009817477042468103,  # приближенно (обычно военный тысячный / NATO mil)
-    }
+    dimensions = physics_data["plane_angle_dimensions"]
 
 
 class Area(unit_base):
-    square_meter: bool = False
-    square_kilometer: bool = False
-    square_mile: bool = False
-    square_yard: bool = False
-    square_foot: bool = False
-    square_inch: bool = False
-    hectare: bool = False
-    acre: bool = False
-
-    dimensions = {
-        "square_meter": 1.0,
-        "square_kilometer": 1_000_000.0,
-        "square_mile": 2_589_988.110336,
-        "square_yard": 0.83612736,
-        "square_foot": 0.09290304,
-        "square_inch": 0.00064516,
-        "hectare": 10_000.0,
-        "acre": 4046.8564224,
-    }
+    dimensions = physics_data["area_dimensions"]
 
 
 # Этот класс писала нейронка
 class FuelConsumption(unit_base):
-    liter_per_100_km: bool = False
-    kilometer_per_liter: bool = False
-    us_mpg: bool = False
-    imperial_mpg: bool = False
-
-    # В качестве базы держим liter_per_100_km
-    dimensions = {
-        "liter_per_100_km": 1.0,
-    }
+    dimensions = physics_data["fuel_consumption_dimensions"]
 
     def convert(self, to_dimension: str):
         to_dimension = to_dimension.lower()
@@ -524,82 +362,28 @@ class FuelConsumption(unit_base):
         else:
             new_value = base_value  # liter_per_100_km
 
-        # Обновляем флаги и значения
-        setattr(self, self.dimension, False)
-        setattr(self, to_dimension, True)
+        # Обновляем значения
         self.value = new_value
         self.dimension = to_dimension
 
 
 # Этот класс писала нейронка
 class Speed(unit_base):
-    meter_per_second: bool = False
-    kilometer_per_hour: bool = False
-    mile_per_hour: bool = False
-    foot_per_second: bool = False
-    knot: bool = False
-
-    dimensions = {
-        "meter_per_second": 1.0,
-        "kilometer_per_hour": 0.2777777778,  # 1 км/ч = 1 / 3.6 м/с
-        "mile_per_hour": 0.44704,  # 1 mph = 0.44704 м/с
-        "foot_per_second": 0.3048,  # 1 ft/s = 0.3048 м/с
-        "knot": 0.514444,  # 1 узел = 0.514444 м/с
-    }
+    dimensions = physics_data["speed_dimensions"]
 
 
 class Frequency(unit_base):
-    hertz: bool = False
-    kilohertz: bool = False
-    megahertz: bool = False
-    gigahertz: bool = False
-
-    dimensions = {
-        "hertz": 1.0,
-        "kilohertz": 1e3,
-        "megahertz": 1e6,
-        "gigahertz": 1e9,
-    }
+    dimensions = physics_data["frequency_dimensions"]
 
 
 class Energy(unit_base):
-    joule: bool = False
-    kilojoule: bool = False
-    gram_calorie: bool = False
-    kilocalorie: bool = False
-    watt_hour: bool = False
-    kilowatt_hour: bool = False
-    electronvolt: bool = False
-    british_thermal_unit: bool = False
-    us_therm: bool = False
-    foot_pound: bool = False
-
-    dimensions = {
-        "joule": 1.0,
-        "kilojoule": 1e3,
-        "gram_calorie": 4.184,
-        "kilocalorie": 4.184e3,
-        "watt_hour": 3.6e3,
-        "kilowatt_hour": 3.6e6,
-        "electronvolt": 1.602176634e-19,
-        "british_thermal_unit": 1055.05585262,
-        "us_therm": 1.054804e8,
-        "foot_pound": 1.3558179483314004,
-    }
+    dimensions = physics_data["energy_dimensions"]
 
 
 # Этот класс писала нейронка
 class Temperature(unit_base):
-    celsius: bool = False
-    fahrenheit: bool = False
-    kelvin: bool = False
-
     # В качестве базы держим celsius
-    dimensions = {
-        "celsius": 1.0,
-        "fahrenheit": 1.0,
-        "kelvin": 1.0,
-    }
+    dimensions = physics_data["temperature_dimensions"]
 
     def convert(self, to_dimension: str):
         to_dimension = to_dimension.lower()
