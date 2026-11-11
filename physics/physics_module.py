@@ -299,36 +299,36 @@ class unit_base:
 
 
 class Time(unit_base):
-    dimensions = physics_data["time_dimensions"]
+    dimensions = physics_data["unit_dimensions"]["time_dimensions"]
 
 
 class Distance(unit_base):
-    dimensions = physics_data["distance_dimensions"]
+    dimensions = physics_data["unit_dimensions"]["distance_dimensions"]
 
 
 class Mass(unit_base):
-    dimensions = physics_data["mass_dimensions"]
+    dimensions = physics_data["unit_dimensions"]["mass_dimensions"]
 
 
 class Pressure(unit_base):
-    dimensions = physics_data["pressure_dimensions"]
+    dimensions = physics_data["unit_dimensions"]["pressure_dimensions"]
 
 
 class Volume(unit_base):
-    dimensions = physics_data["volume_dimensions"]
+    dimensions = physics_data["unit_dimensions"]["volume_dimensions"]
 
 
 class PlaneAngle(unit_base):
-    dimensions = physics_data["plane_angle_dimensions"]
+    dimensions = physics_data["unit_dimensions"]["plane_angle_dimensions"]
 
 
 class Area(unit_base):
-    dimensions = physics_data["area_dimensions"]
+    dimensions = physics_data["unit_dimensions"]["area_dimensions"]
 
 
 # Этот класс писала нейронка
 class FuelConsumption(unit_base):
-    dimensions = physics_data["fuel_consumption_dimensions"]
+    dimensions = physics_data["unit_dimensions"]["fuel_consumption_dimensions"]
 
     def convert(self, to_dimension: str):
         to_dimension = to_dimension.lower()
@@ -365,21 +365,21 @@ class FuelConsumption(unit_base):
 
 # Этот класс писала нейронка
 class Speed(unit_base):
-    dimensions = physics_data["speed_dimensions"]
+    dimensions = physics_data["unit_dimensions"]["speed_dimensions"]
 
 
 class Frequency(unit_base):
-    dimensions = physics_data["frequency_dimensions"]
+    dimensions = physics_data["unit_dimensions"]["frequency_dimensions"]
 
 
 class Energy(unit_base):
-    dimensions = physics_data["energy_dimensions"]
+    dimensions = physics_data["unit_dimensions"]["energy_dimensions"]
 
 
 # Этот класс писала нейронка
 class Temperature(unit_base):
     # В качестве базы держим celsius
-    dimensions = physics_data["temperature_dimensions"]
+    dimensions = physics_data["unit_dimensions"]["temperature_dimensions"]
 
     def convert(self, to_dimension: str):
         to_dimension = to_dimension.lower()
@@ -413,81 +413,15 @@ class Temperature(unit_base):
     # Нужно написать отдельный конвертер для температуры
 
 
-force: float = (None,)
-acceleration: float = (None,)
-m_1: float = (None,)
-m_2: float = (None,)
-distance: float = (None,)
-density: float = (None,)
-volume: float = (None,)
-amount_of_substance_in_moles: float = (None,)
-molar_mass: float = (None,)
-mass_of_one_molecule: float = (None,)
-number_of_particles: float = (None,)
-weight_force: float = (None,)
-total_energy_of_a_free_body: float = (None,)
-speed_of_light: float = (None,)
-impulse: float = (None,)
-force_gr: float = (None,)
-mass: float = (None,)
-time: float = (None,)
-radius_of_the_planet: float = (None,)
-orbit_altitude: float = (None,)
-orbital_speed: float = (None,)
-the_mass_of_the_planet_in_terms_of_Earth_masses: float = (None,)
-gas_pressure: float = (None,)
-gas_volume: float = (None,)
-temperature: float = (None,)
-speed: float = (None,)
-component_mass: float = (None,)
-total_mass_of_all_components_of_the_mixture: float = (None,)
-force_module: float = (None,)
-shoulder_strength: float = (None,)
-force_1: float = (None,)
-mass_of_gas: float = (None,)
-gas_density: float = (None,)
-universal_gas_constant: float = (None,)
-temperature_in_kelvin: float = (None,)
-pressure: float = (None,)
-radius: float = (None,)
-angular_velocity: float = (None,)
-initial_speed: float = (None,)
-final_speed: float = (None,)
-height: float = (None,)
-body_stiffness_coefficient: float = (None,)
-absolute_deformation: float = (None,)
-delta_time: float = (None,)
-initial_number_of_cores: float = (None,)
-half_life: float = (None,)
-work: float = (None,)
-torque: float = (None,)
-voltage: float = (None,)
-amperage: float = (None,)
-resist: float = (None,)
-active_power: float = (None,)
-reactive_power: float = (None,)
-charge: float = (None,)
-electrical_power: float = (None,)
-adiabatic_compressibility_of_the_medium: float = (None,)
-medium_density: float = (None,)
-adiabatic_index: float = (None,)
-absolute_temperature_in_kelvin: float = (None,)
-molar_mass_of_gas: float = (None,)
-wavelength: float = (None,)
-oscillation_frequency: float = (None,)
-air_temperature_in_Celsius: float = (None,)
-orbital_speed_of_the_planet: float = (None,)
-the_planets_second_cosmic_velocity: float = (None,)
-gravitational_constant: float = (6.6743015 * pow(10, -11),)
-acceleration_of_gravity: float = (9.81,)
-molar_volume: float = (22.4,)
-
-
 def check(*args):
     for arg in args:
         if arg is None:
             return False
     return True
+
+
+# распаковка величин в глобальные переменные для использования функциями
+globals().update(physics_data["units"])
 
 
 # Mass Inertial and Gravitational
