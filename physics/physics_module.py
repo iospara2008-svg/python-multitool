@@ -270,8 +270,8 @@ with open("src/physics_data.json", "r") as _physics_data:
 print(physics_data)
 
 
-# пример создание объекта наследуемого от класса unit_base: object_mass = _Mass(value, "kilogram")
-class unit_base:
+# пример создание объекта наследуемого от класса UnitBase: object_mass = _Mass(value, "kilogram")
+class UnitBase:
     # Создание объекта (экземлпяра класса), инициализация принимает аргументы: Количество что является произвольной величиной
     # не зависящей от единицы измерения и название единицы измерения для ее определения
     def __init__(self, value: float, dimension: str):
@@ -298,36 +298,36 @@ class unit_base:
         return f"Value {self.value}, Dimension {self.dimension}"
 
 
-class Time(unit_base):
+class Time(UnitBase):
     dimensions = physics_data["unit_dimensions"]["time_dimensions"]
 
 
-class Distance(unit_base):
+class Distance(UnitBase):
     dimensions = physics_data["unit_dimensions"]["distance_dimensions"]
 
 
-class Mass(unit_base):
+class Mass(UnitBase):
     dimensions = physics_data["unit_dimensions"]["mass_dimensions"]
 
 
-class Pressure(unit_base):
+class Pressure(UnitBase):
     dimensions = physics_data["unit_dimensions"]["pressure_dimensions"]
 
 
-class Volume(unit_base):
+class Volume(UnitBase):
     dimensions = physics_data["unit_dimensions"]["volume_dimensions"]
 
 
-class PlaneAngle(unit_base):
+class PlaneAngle(UnitBase):
     dimensions = physics_data["unit_dimensions"]["plane_angle_dimensions"]
 
 
-class Area(unit_base):
+class Area(UnitBase):
     dimensions = physics_data["unit_dimensions"]["area_dimensions"]
 
 
 # Этот класс писала нейронка
-class FuelConsumption(unit_base):
+class FuelConsumption(UnitBase):
     dimensions = physics_data["unit_dimensions"]["fuel_consumption_dimensions"]
 
     def convert(self, to_dimension: str):
@@ -362,20 +362,20 @@ class FuelConsumption(unit_base):
 
 
 # Этот класс писала нейронка
-class Speed(unit_base):
+class Speed(UnitBase):
     dimensions = physics_data["unit_dimensions"]["speed_dimensions"]
 
 
-class Frequency(unit_base):
+class Frequency(UnitBase):
     dimensions = physics_data["unit_dimensions"]["frequency_dimensions"]
 
 
-class Energy(unit_base):
+class Energy(UnitBase):
     dimensions = physics_data["unit_dimensions"]["energy_dimensions"]
 
 
 # Этот класс писала нейронка
-class Temperature(unit_base):
+class Temperature(UnitBase):
     # В качестве базы держим celsius
     dimensions = physics_data["unit_dimensions"]["temperature_dimensions"]
 
