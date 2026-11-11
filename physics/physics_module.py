@@ -332,8 +332,6 @@ class FuelConsumption(unit_base):
 
     def convert(self, to_dimension: str):
         to_dimension = to_dimension.lower()
-        if not hasattr(self, to_dimension):
-            raise ValueError(f"Unknown dimension: {to_dimension}")
 
         # 1. Сначала переводим текущее значение к базовому "liter_per_100_km"
         if self.dimension == "us_mpg":
