@@ -286,10 +286,6 @@ class unit_base:
     def convert(self, to_dimension: str):
         to_dimension = to_dimension.lower()
 
-        # Сброс флага dimension для назначения нового to_dimension.
-        setattr(self, self.dimension, False)
-        setattr(self, to_dimension, True)
-
         # преобразование value в соответствии с переданным аргументом to_dimension.
         self.value = self.value * self.dimensions[self.dimension]
         self.value = self.value / self.dimensions[to_dimension]
