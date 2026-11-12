@@ -131,7 +131,7 @@
         "molar_mass": null,
         "mass_of_one_molecule": null,
         "number_of_particles": null,
-        "weight_force": null,
+        "weight": null,
         "total_energy_of_a_free_body": null,
         "speed_of_light": null,
         "impulse": null,
@@ -180,6 +180,167 @@
         "adiabatic_index": null,
         "absolute_temperature_in_kelvin": null,
         "molar_mass_of_gas": null,
+        "wavelength": null,
+        "oscillation_frequency": null,
+        "air_temperature_in_Celsius": null,
+        "orbital_speed_of_the_planet": null,
+        "the_planets_second_cosmic_velocity": null,
+        "gravitational_constant": "6.6743015 * pow(10,-11)",
+        "acceleration_of_gravity": "(9.81,)",
+        "molar_volume": "(22.4,)"
+    },
+    "formulas": {
+        "mass": [
+            "force / acceleration",
+            "force_gr * distance**2 / (gravitational_constant * m_2)",
+            "density * volume",
+            "amount_of_substance_in_moles * molar_mass",
+            "mass_of_one_molecule * number_of_particles",
+            "weight / acceleration_of_gravity",
+            "(total_energy_of_a_free_body**2 / speed_of_light**4) - impulse**2 / speed_of_light**2"
+        ],
+        "weight": [
+            "mass * acceleration_of_gravity"
+        ],
+        "speed": [
+            "distance / time"
+        ],
+        "the_second_liberation_cosmic_velocity_of_the_body": [
+            "math.sqrt((2 * gravitational_constant * the_mass_of_the_planet_in_terms_of_Earth_masses) / (radius_of_the_planet + orbit_altitude))"
+        ],
+        "constant_value_under_given_conditions": [
+            "gas_pressure * gas_volume"
+        ],
+        "volumes_law_const": [
+            "gas_volume / temperature"
+        ],
+        "kinetic_energy_of_the_body": [
+            "mass * speed**2 / 2"
+        ],
+        "mixture_concentration_formula": [
+            "component_mass / total_mass_of_all_components_of_the_mixture"
+        ],
+        "moment_of_force"[
+            "force_module * shoulder_strength"
+        ],
+        "force": [
+            "-force",
+            "mass * acceleration"
+        ],
+        "molar_mass_of_gas": [
+            "mass_of_gas / amount_of_substance_in_moles",
+            "gas_density * molar_volume",
+            "(density * universal_gas_constant * temperature_in_kelvin) / pressure"
+        ],
+        "normal_acceleration": [
+            "speed**2 / radius",
+            "angular_velocity**2 * radius"
+        ],
+        "acceleration": [
+            "final_speed - initial_speed) / time",
+            "force / mass"
+        ],
+        "the_first_orbital_cosmic_velocity_of_a_body": [
+            "math.sqrt((gravitational_constant * the_mass_of_the_planet_in_terms_of_Earth_masses) / (radius_of_the_planet + orbit_altitude))"
+        ],
+        "centrifugal_force": [
+            "(mass * speed**2) / radius",
+            "mass * angular_velocity**2 * radius"
+        ],
+        "potential_energy": [
+            "mass * acceleration_of_gravity * height",
+            "(body_stiffness_coefficient * absolute_deformation**2) / 2"
+        ],
+        "tangential_acceleration": [
+            "(final_speed - initial_speed) / delta_time"
+        ],
+        "mass_of_matter_over_time": [
+            "initial_number_of_cores * (1 / half_life) ** 2"
+        ],
+        "mechanic_power": [
+            "work / time",
+            "force * speed",
+            "torque * angular_velocity"
+        ],
+        "direct_current": [
+            "voltage * amperage",
+            "amperage**2 * resist",
+            "voltage**2 / resist"
+        ],
+        "alternating_current": [
+            "voltage * amperage",
+            "math.sqrt(active_power**2 + reactive_power**2)"
+        ],
+        "amperage": [
+            "charge / time",
+            "voltage / resist",
+            "electrical_power / voltage"
+        ],
+        "speed_of_sound": [
+            "math.sqrt(1 / (adiabatic_compressibility_of_the_medium * medium_density))",
+            "math.sqrt((adiabatic_index * universal_gas_constant * absolute_temperature_in_kelvin) / molar_mass_of_gas)",
+            "wavelength * oscillation_frequency",
+            "331 + 0.6 * air_temperature_in_Celsius"
+        ],
+        "the_third_cosmic_velocity_of_a_body": [
+            "math.sqrt((math.sqrt(2) - 1) ** 2 * orbital_speed_of_the_planet**2 + the_planets_second_cosmic_velocity**2)"
+        ],
+        "ideal_gas": [
+            "(gas_pressure * gas_volume) / absolute_temperature_in_kelvin"
+        ],
+        "m_1": null,
+        "m_2": null,
+        "distance": null,
+        "density": null,
+        "volume": null,
+        "amount_of_substance_in_moles": null,
+        "molar_mass": null,
+        "mass_of_one_molecule": null,
+        "number_of_particles": null,
+        "total_energy_of_a_free_body": null,
+        "speed_of_light": null,
+        "impulse": null,
+        "force_gr": null,
+        "time": null,
+        "radius_of_the_planet": null,
+        "orbit_altitude": null,
+        "orbital_speed": null,
+        "the_mass_of_the_planet_in_terms_of_Earth_masses": null,
+        "gas_pressure": null,
+        "gas_volume": null,
+        "temperature": null,
+        "component_mass": null,
+        "total_mass_of_all_components_of_the_mixture": null,
+        "force_module": null,
+        "shoulder_strength": null,
+        "force_1": null,
+        "mass_of_gas": null,
+        "gas_density": null,
+        "universal_gas_constant": null,
+        "temperature_in_kelvin": null,
+        "pressure": null,
+        "radius": null,
+        "angular_velocity": null,
+        "initial_speed": null,
+        "final_speed": null,
+        "height": null,
+        "body_stiffness_coefficient": null,
+        "absolute_deformation": null,
+        "delta_time": null,
+        "initial_number_of_cores": null,
+        "half_life": null,
+        "work": null,
+        "torque": null,
+        "voltage": null,
+        "resist": null,
+        "active_power": null,
+        "reactive_power": null,
+        "charge": null,
+        "electrical_power": null,
+        "adiabatic_compressibility_of_the_medium": null,
+        "medium_density": null,
+        "adiabatic_index": null,
+        "absolute_temperature_in_kelvin": null,
         "wavelength": null,
         "oscillation_frequency": null,
         "air_temperature_in_Celsius": null,
