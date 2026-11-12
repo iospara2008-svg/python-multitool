@@ -427,34 +427,8 @@ globals().update(physics_data["units"])
 # Масса эквивалентна энергии покоя
 def mass_formula() -> list:  # Inertial mass
     results: list = []
-
-    if check(force, acceleration):
-        print("force = mass * acceleration -> mass = force / acceleration")
-        results.append(force / acceleration)
-    if check(force_gr, gravitational_constant, m_2, distance):
-        results.append(force_gr * distance**2 / (gravitational_constant * m_2))
     # print("force_gr = gravitational_constant * (m_1 * m_2) / distance^2")
     # return gravitational_constant * (m_1 * m_2) / pow(distance, 2)
-    if check(density, volume):
-        print("mass = density * volume")
-        results.append(density * volume)
-    if check(amount_of_substance_in_moles, molar_mass):
-        print("mass = amount of substance in moles * molar mass")
-        results.append(amount_of_substance_in_moles * molar_mass)
-    if check(mass_of_one_molecule, number_of_particles):
-        print("mass = mass of one molecule/atom * number of particles")
-        results.append(mass_of_one_molecule * number_of_particles)
-    if check(weight_force, acceleration_of_gravity):
-        print("mass = weight force / acceleration of gravity")
-        results.append(weight_force / acceleration_of_gravity)
-    if check(total_energy_of_a_free_body, speed_of_light, impulse):
-        print(
-            "mass^2 = (total energy of a free body^2 / speed of light^4) - (impulse^2 / speed of light^2)"
-        )
-        results.append(
-            (total_energy_of_a_free_body**2 / speed_of_light**4)
-            - impulse**2 / speed_of_light**2
-        )
 
     return results
 
@@ -462,21 +436,11 @@ def mass_formula() -> list:  # Inertial mass
 def weight_formula() -> list:
     results: list = []
 
-    # Основная фомула веса: масса умноженная на ускорение гравитации
-    if check(mass, acceleration_of_gravity):
-        print("weight = mass * acceleration of gravity")
-        results.append(mass * acceleration_of_gravity)
-
     return results
 
 
 def speed_formula() -> list:
     results: list = []
-
-    # Основная фомула скорости: пройденное расстояние делить на время движения
-    if check(distance, time):
-        print("speed = distance / time")
-        results.append(distance / time)
 
     return results
 
@@ -484,37 +448,11 @@ def speed_formula() -> list:
 def the_second_liberation_cosmic_velocity_of_the_body_formula() -> list:
     results: list = []
 
-    if check(
-        radius_of_the_planet,
-        orbit_altitude,
-        orbital_speed,
-        the_mass_of_the_planet_in_terms_of_Earth_masses,
-        gravitational_constant,
-    ):
-        print(
-            "math.sqrt((2 * gravitational_constant * the_mass_of_the_planet_in_terms_of_Earth_masses) / (radius_of_the_planet + orbit_altitude))"
-        )
-        results.append(
-            math.sqrt(
-                (
-                    2
-                    * gravitational_constant
-                    * the_mass_of_the_planet_in_terms_of_Earth_masses
-                )
-                / (radius_of_the_planet + orbit_altitude)
-            )
-        )
-
     return results
 
 
 def boyles_law_formula() -> list:
     results: list = []
-
-    if check(gas_pressure, gas_volume):
-        results.append(
-            gas_pressure * gas_volume
-        )  # constant_value_under_given_conditions
 
     return results
 
@@ -522,26 +460,11 @@ def boyles_law_formula() -> list:
 def volumes_law_formula() -> list:
     results: list = []
 
-    if check(gas_volume, temperature):
-        results.append(gas_volume / temperature)  # const
-
-    return results
-
-
-def gay_lussacs_second_law_formula() -> list:
-    results: list = []
-
-    if check(gas_pressure, temperature):
-        results.append(gas_pressure / temperature)  # gas_pressure
-
     return results
 
 
 def kinetic_energy_of_the_body_formula() -> list:
     results: list = []
-
-    if check(mass, speed):
-        results.append(mass * speed**2 / 2)
 
     return results
 
@@ -549,17 +472,11 @@ def kinetic_energy_of_the_body_formula() -> list:
 def mixture_concentration_formula() -> list:
     results: list = []
 
-    if check(component_mass, total_mass_of_all_components_of_the_mixture):
-        results.append(component_mass / total_mass_of_all_components_of_the_mixture)
-
     return results
 
 
 def moment_of_force_formula() -> list:
     results: list = []
-
-    if check(force_module, shoulder_strength):
-        results.append(force_module * shoulder_strength)
 
     return results
 
@@ -567,23 +484,11 @@ def moment_of_force_formula() -> list:
 def newtons_third_law_formula() -> list:
     results: list = []
 
-    if check(force_1):
-        results.append(-force_1)  # force_2
-
     return results
 
 
 def molar_mass_of_gas_formula() -> list:
     results: list = []
-
-    if check(mass_of_gas, amount_of_substance_in_moles):
-        results.append(mass_of_gas / amount_of_substance_in_moles)
-    if check(gas_density, molar_volume):
-        results.append(gas_density * molar_volume)  # Through molar volume
-    if check(density, universal_gas_constant, temperature_in_kelvin, pressure):
-        results.append(
-            (density * universal_gas_constant * temperature_in_kelvin) / pressure
-        )  # From the Mendeleev-Clapeyron equation
 
     return results
 
@@ -591,21 +496,11 @@ def molar_mass_of_gas_formula() -> list:
 def normal_acceleration_when_moving_in_a_circle_formula() -> list:
     results: list = []
 
-    if check(speed, radius):
-        results.append(speed**2 / radius)
-    if check(angular_velocity, radius):
-        results.append(angular_velocity**2 * radius)
-
     return results
 
 
 def acceleration_formula() -> list:
     results: list = []
-
-    if check(final_speed, initial_speed, time):
-        results.append((final_speed - initial_speed) / time)
-    if check(force, mass):
-        results.append(force / mass)
 
     return results
 
@@ -613,33 +508,11 @@ def acceleration_formula() -> list:
 def the_first_orbital_cosmic_velocity_of_a_body_formula() -> list:
     results: list = []
 
-    if check(
-        radius_of_the_planet,
-        orbit_altitude,
-        orbital_speed,
-        the_mass_of_the_planet_in_terms_of_Earth_masses,
-        gravitational_constant,
-    ):
-        results.append(
-            math.sqrt(
-                (
-                    gravitational_constant
-                    * the_mass_of_the_planet_in_terms_of_Earth_masses
-                )
-                / (radius_of_the_planet + orbit_altitude)
-            )
-        )
-
     return results
 
 
 def centrifugal_force_formula() -> list:
     results: list = []
-
-    if check(mass, speed, radius):
-        results.append((mass * speed**2) / radius)
-    if check(mass, angular_velocity, radius):
-        results.append(mass * angular_velocity**2 * radius)
 
     return results
 
@@ -647,19 +520,11 @@ def centrifugal_force_formula() -> list:
 def potential_energy_formula() -> list:
     results: list = []
 
-    if check(mass, acceleration_of_gravity, height):
-        results.append(mass * acceleration_of_gravity * height)
-    if check(body_stiffness_coefficient, absolute_deformation):
-        results.append((body_stiffness_coefficient * absolute_deformation**2) / 2)
-
     return results
 
 
 def tangential_acceleration_formula() -> list:
     results: list = []
-
-    if check(final_speed, initial_speed, delta_time):
-        results.append((final_speed - initial_speed) / delta_time)
 
     return results
 
@@ -667,21 +532,11 @@ def tangential_acceleration_formula() -> list:
 def mass_of_matter_over_time_formula() -> list:
     results: list = []
 
-    if check(initial_number_of_cores, half_life):
-        results.append(initial_number_of_cores * (1 / half_life) ** 2)
-
     return results
 
 
 def mechanic_power_formula() -> list:
     results: list = []
-
-    if check(work, time):
-        results.append(work / time)
-    if check(force, speed):
-        results.append(force * speed)
-    if check(torque, angular_velocity):
-        results.append(torque * angular_velocity)
 
     return results
 
@@ -689,23 +544,11 @@ def mechanic_power_formula() -> list:
 def direct_current_formula() -> list:
     results: list = []
 
-    if check(voltage, amperage):
-        results.append(voltage * amperage)
-    if check(amperage, resist):
-        results.append(amperage**2 * resist)
-    if check(voltage, resist):
-        results.append(voltage**2 / resist)
-
     return results
 
 
 def alternating_current_formula() -> list:
     results: list = []
-
-    if check(voltage, amperage):
-        results.append(voltage * amperage)
-    if check(active_power, reactive_power):
-        results.append(math.sqrt(active_power**2 + reactive_power**2))
 
     return results
 
@@ -713,21 +556,11 @@ def alternating_current_formula() -> list:
 def force_formula() -> list:
     results: list = []
 
-    if check(mass, acceleration):
-        results.append(mass * acceleration)
-
     return results
 
 
 def amperage_formula() -> list:
     results: list = []
-
-    if check(charge, time):
-        results.append(charge / time)
-    if check(voltage, resist):
-        results.append(voltage / resist)
-    if check(electrical_power, voltage):
-        results.append(electrical_power / voltage)
 
     return results
 
@@ -735,53 +568,17 @@ def amperage_formula() -> list:
 def speed_of_sound_formula() -> list:
     results: list = []
 
-    if check(adiabatic_compressibility_of_the_medium, medium_density):
-        results.append(
-            math.sqrt(1 / (adiabatic_compressibility_of_the_medium * medium_density))
-        )
-    if check(
-        adiabatic_index,
-        universal_gas_constant,
-        absolute_temperature_in_kelvin,
-        molar_mass_of_gas,
-    ):
-        results.append(
-            math.sqrt(
-                (
-                    adiabatic_index
-                    * universal_gas_constant
-                    * absolute_temperature_in_kelvin
-                )
-                / molar_mass_of_gas
-            )
-        )
-    if check(wavelength, oscillation_frequency):
-        results.append(wavelength * oscillation_frequency)
-    if check(air_temperature_in_Celsius):
-        results.append(331 + 0.6 * air_temperature_in_Celsius)
-
     return results
 
 
 def the_third_cosmic_velocity_of_a_body_formula() -> list:
     results: list = []
 
-    if check(orbital_speed_of_the_planet, the_planets_second_cosmic_velocity):
-        results.append(
-            math.sqrt(
-                (math.sqrt(2) - 1) ** 2 * orbital_speed_of_the_planet**2
-                + the_planets_second_cosmic_velocity**2
-            )
-        )
-
     return results
 
 
 def ideal_gas_formula() -> list:
     results: list = []
-
-    if check(gas_pressure, gas_volume, absolute_temperature_in_kelvin):
-        results.append((gas_pressure * gas_volume) / absolute_temperature_in_kelvin)
 
     return results
 
