@@ -220,7 +220,7 @@
         "mixture_concentration_formula": [
             "component_mass / total_mass_of_all_components_of_the_mixture"
         ],
-        "moment_of_force"[
+        "moment_of_force": [
             "force_module * shoulder_strength"
         ],
         "force": [
