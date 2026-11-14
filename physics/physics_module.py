@@ -278,13 +278,6 @@ class Temperature(UnitBase):
     # Нужно написать отдельный конвертер для температуры
 
 
-def check(*args):
-    for arg in args:
-        if arg is None:
-            return False
-    return True
-
-
 # распаковка величин в глобальные переменные для использования функциями
 globals().update(physics_data["units"])
 
