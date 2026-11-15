@@ -33,37 +33,15 @@
 import math
 import json
 
+with open("src/physics_data.json", "r") as _physics_data:
+    physics_data = json.load(_physics_data)
+
 physical_objects: dict = None
+
 
 # Физические константы
 # Основные физические константы
-physical_constant = """
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-|Quantity                           |Value      |
-|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!|
-|elementary charge                  |           |
-|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!|
-|Newtonian constant of gravitation  |           |
-|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!|
-|Planck constant                    |           |
-|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!|
-|speed of light in vacuum           |           |
-|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!|
-|vacuum electric permittivity       |           |
-|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!|
-|vacuum magnetic permeability       |           |
-|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!|
-|electron mass                      |           |
-|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!|
-|fine-structure constant            |           |
-|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!|
-|Josephson constant                 |           |
-|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!|
-|Rydberg constant                   |           |
-|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!|
-|von Klitzing constant              |           |
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-"""
+physical_constant = physics_data["tables"]["physical_constant"]
 
 # Вещества
 # Вещество может иметь агрегатные состояния: твердое; жидкое; газообразное; плазма; сверхтекучее; сверхпроводящее.
@@ -89,54 +67,7 @@ physical_constant = """
 # Энергия
 # Скаляраная физическая величина, являющаяся единой мерой различных форм движения и взаимодействия материи.
 # если физическая система является замкнутой, то её энергия сохраняется в этой системе на протяжении времени, в течение которого система будет являться замкнутой. Это называется законом сохранения энергии.
-Energy_description = """
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-|Type of energy    |Description                                                     |
-|!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|
-|Chemical          |potential energy due to chemical bonds                          |
-|!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|
-|Chromodynamic     |potential energy that binds quarks to form hadrons              |
-|!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|
-|Elastic           |potential energy due to the deformation of a material           |
-|                  |(or its container) exhibiting a restorative force as it         |
-|                  |returns to its original shape                                   |
-|!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|
-|Electric          |potential energy due to or stored in electric fields            |
-|!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|
-|Gravitational     |potential energy due to or stored in electric fields            |
-|!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|
-|Ionization        |potential energy that binds an electron to its atom or molecule |
-|!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|
-|Magnetic          |potential energy due to or stored in magnetic fields            |
-|!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|
-|Mechanical        |the sum of macroscopic translational and rotational kinetic and |
-|                  |potential energies                                              |
-|!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|
-|Mechanical wave   |kinetic and potential energy in an elastic material due to a    |
-|                  |propagating oscillation of matter                               |
-|!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|
-|Nuclear           |kinetic and potential energy in an elastic material due to a    |
-|                  |propagating oscillation of matter                               |
-|!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|
-|Radiant           |potential energy stored in the fields of waves propagated by    |
-|                  |electromagnetic radiation, including light                      |
-|!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|
-|Rest              |potential energy due to an object's rest mass                   |
-|!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|
-|Rotational        |kinetic energy due to the rotation of an object                 |
-|!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|
-|Sound wave        |kinetic and potential energy in a material due to a sound       |
-|                  |propagated wave (a particular type of mechanical wave)          |
-|!!!!!!!!!!!!!!!!!!|!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!|
-|Thermal           |kinetic energy of the microscopic motion of particles, a kind of|
-|                  |disordered equivalent of mechanical energy                      |
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-"""
-
-with open("src/physics_data.json", "r") as _physics_data:
-    physics_data = json.load(_physics_data)
-
-print(physics_data)
+energy_description = physics_data["tables"]["energy_description"]
 
 
 # пример создание объекта наследуемого от класса UnitBase: object_mass = _Mass(value, "kilogram")
