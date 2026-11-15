@@ -283,8 +283,9 @@ globals().update(physics_data["units"])
 
 
 # создание физического объекта
-def create_object(name_of_object: str):
-    globals()[name_of_object] = type(name_of_object, (), {})
+def create_physical_object(name_of_physical_object: str):
+    global physical_objects  # dict
+    physical_objects[name_of_physical_object] = type(name_of_physical_object, (), {})
 
 
 # нахождение любого значения
