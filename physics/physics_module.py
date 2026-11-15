@@ -217,18 +217,22 @@ globals().update(physics_data["units"])
 
 # создание физического объекта
 def create_physical_object(name_of_physical_object: str):
-    physical_objects[name_of_physical_object] = dict(physics_data["units"])
+    values = physics_data["units"]
+    formulas = physics_data["formulas"]
+    physical_objects[name_of_physical_object] = {"values": values, "formulas": formulas}
 
 
 # нахождение любого значения
-def find_value(name_of_value):
-    for formula in physics_data["formulas"][name_of_value]:
+def find_value(name_of_physical_object, name_of_value, accept):
+    for formula in physical_objects[name_of_physical_object]["formulas"]:
         try:
-            eval(formula)
+            ansver = eval(formula)
+            if accept:
+                physical_objects[name_of_physical_object]["values"]
         except TypeError:
             print(f"error: {formula}")
         finally:
-            print(f"ansver: {physics_data['units'][name_of_value]}")
+            print(f"ansver: {ansver}")
     print(
         f"name of value: {name_of_value}, value:{physics_data['units'][name_of_value]}"
     )
