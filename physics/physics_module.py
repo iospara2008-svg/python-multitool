@@ -33,6 +33,8 @@
 import math
 import json
 
+physical_objects: dict = None
+
 # Физические константы
 # Основные физические константы
 physical_constant = """
@@ -284,8 +286,7 @@ globals().update(physics_data["units"])
 
 # создание физического объекта
 def create_physical_object(name_of_physical_object: str):
-    global physical_objects  # dict
-    physical_objects[name_of_physical_object] = type(name_of_physical_object, (), {})
+    physical_objects[name_of_physical_object] = dict(physics_data["units"])
 
 
 # нахождение любого значения
