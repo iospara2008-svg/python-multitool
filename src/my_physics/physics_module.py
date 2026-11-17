@@ -1,6 +1,9 @@
 """
-Модуль physics_lib содержит следующие функции:
-    физические формулы:
+physics_module
+Создание физического объекта:
+create_physical_object(name_of_physical_object: str)
+
+Модуль содержит следующие физические формулы:
     расчет массы
     расчет веса
     расчет скорости
@@ -33,7 +36,7 @@
 import math
 import json
 
-with open("src/physics_data.json", "r") as _physics_data:
+with open("src/my_physics/Physics_data", "r") as _physics_data:
     physics_data = json.load(_physics_data)
 
 physical_objects: dict = None
@@ -209,10 +212,6 @@ class Temperature(UnitBase):
         self.dimension = to_dimension
 
     # Нужно написать отдельный конвертер для температуры
-
-
-# распаковка величин в глобальные переменные для использования функциями
-globals().update(physics_data["units"])
 
 
 # создание физического объекта
