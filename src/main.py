@@ -12,8 +12,8 @@
 """
 
 import time
-import math_lib
-import physics_lib
+from my_math import math_module
+from my_physics import physics_module
 # import tests
 
 print("Python Multitool works")
