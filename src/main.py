@@ -37,13 +37,19 @@ def create_timer(ticks, _action_func=None, _on_finish_func=None, period=1):
 
 def evaluater():
     while True:
-        print(eval(input()))
-
+        try:
+            print(eval(input()))
+        except NameError, SyntaxError:
+            print("Ошибка")
+            print("Попробуйте снова")
 
 def executer():
     while True:
-        exec(input())
-
+        try:
+            exec(input())
+        except NameError, SyntaxError:
+            print("Ошибка")
+            print("Попробуйте снова")
 
 while True:
     match input("user input ->").strip().lower():
