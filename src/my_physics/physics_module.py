@@ -1,7 +1,14 @@
 """
 physics_module
+
 Создание физического объекта:
 create_physical_object(name_of_physical_object: str)
+
+вывод величин физического элемента:
+print_values(name_of_physical_object: str)
+
+нахождение величины физического объекта по названию:
+find_value(name_of_physical_object, name_of_value, accept)
 
 Модуль содержит следующие физические формулы:
     расчет массы
@@ -39,7 +46,7 @@ import json
 with open("src/my_physics/Physics_data", "r") as _physics_data:
     physics_data = json.load(_physics_data)
 
-physical_objects: dict = None
+physical_objects: dict = {}
 
 
 # Физические константы
@@ -220,16 +227,19 @@ def create_physical_object(name_of_physical_object: str):
     formulas = physics_data["formulas"]
     physical_objects[name_of_physical_object] = {"values": values, "formulas": formulas}
 
+def print_values(name_of_physical_object: str):
+    for value in physical_objects[name_of_physical_object["values"]]:
+        print(value)
 
 # нахождение любого значения
 def find_value(name_of_physical_object, name_of_value, accept):
     for formula in physical_objects[name_of_physical_object]["formulas"]:
         try:
-            ansver = eval(formula)
+            ansver = eval(formula)  # исполняем код вычисляющий значение
             if accept:
-                physical_objects[name_of_physical_object]["values"]
+                physical_objects[name_of_physical_object]["values"] = ansver
         except TypeError:
-            print(f"error: {formula}")
+            print(f"error: {formula}, возможно переменная из формулы неопределена")
         finally:
             print(f"ansver: {ansver}")
     print(
