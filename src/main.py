@@ -39,7 +39,7 @@ def evaluater():
     while True:
         try:
             print(eval(input()))
-        except NameError, SyntaxError:
+        except (NameError, SyntaxError, AttributeError, TypeError, ValueError):
             print("Ошибка")
             print("Попробуйте снова")
 
@@ -47,7 +47,7 @@ def executer():
     while True:
         try:
             exec(input())
-        except NameError, SyntaxError:
+        except NameError, SyntaxError, AttributeError, TypeError, ValueError:
             print("Ошибка")
             print("Попробуйте снова")
 

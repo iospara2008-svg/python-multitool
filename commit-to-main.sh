@@ -14,3 +14,6 @@ git commit --no-verify --allow-empty -m "$message"
 
 # Force-push the current commit directly to the main branch.
 git push --force origin HEAD:main
+
+#что бы запустить коммит
+# bash commit-to-main.sh "Сообщение коммита"
